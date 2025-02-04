@@ -7,7 +7,7 @@ namespace GerenciarDados.AcessarDados
     public class Poupanca_AD : Repositorio<Poupanca>
     {
         public Poupanca_AD(bool Save = true) : base(Save) { }
-        public static List<Poupanca> ObterPoupancaPorId(int ano)
+        public static List<Poupanca> ObterPoupancaPorAno(int ano)
         {
             try
             {

@@ -7,7 +7,7 @@ namespace GerenciarDados.AcessarDados
     public class Receita_AD : Repositorio<Receita>
     {
         public Receita_AD(bool Save = true) : base(Save) { }
-        public static List<Receita> ObterReceitaPorId(int ano)
+        public static List<Receita> ObterReceitaPorAno(int ano)
         {
             try
             {

@@ -63,6 +63,11 @@ namespace AppFinanceiroEF.Telas
                     DtgDados.ItemsSource = SubCategoria_AD.ObterSubCategorias()
                         .Where(sc => sc.NomeDoFiltro == "Poupança");
                 }
+                else if (CbxNomeDeFiltros.Text == "Receita")
+                {
+                    DtgDados.ItemsSource = SubCategoria_AD.ObterSubCategorias()
+                        .Where(sc => sc.NomeDoFiltro == "Receita");
+                }
                 else
                 {
                     DtgDados.ItemsSource = SubCategoria_AD.ObterSubCategorias()

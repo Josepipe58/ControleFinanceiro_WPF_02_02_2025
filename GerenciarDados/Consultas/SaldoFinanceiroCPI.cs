@@ -24,8 +24,7 @@ namespace GerenciarDados.Consultas
                     contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(d => d.Valor).Sum() +
                     contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa").Select(d => d.Valor).Sum() +
                     contexto.TInvestimento.Where(i => i.Ano == ano && new[] { "Depósito", "Depósito Inicial" }
-                    .Contains(i.NomeDaSubCategoria)).Select(i => i.Valor).Sum() +
-                    contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Saldo da Carteira").Select(r => r.Valor).Sum() +
+                    .Contains(i.NomeDaSubCategoria)).Select(i => i.Valor).Sum() +                   
                     contexto.TPoupanca.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda").Select(cd => cd.Valor).Sum());
 
                 return Convert.ToDouble(saldoDaCarteira);
@@ -69,7 +68,7 @@ namespace GerenciarDados.Consultas
                 using var contexto = new Contexto();
                 var saldoDaPoupanca =
                     contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Depósito Inicial",
-                        "Saldo do Ano Anterior", "Juros de Investimentos", "Depósito"}.Contains(cd.NomeDaSubCategoria))
+                        "Saldo Anterior", "Juros de Investimentos", "Depósito"}.Contains(cd.NomeDaSubCategoria))
                     .Select(cd => cd.Valor).Sum() -
                     contexto.TInvestimento.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Saque")
                     .Select(cd => cd.Valor).Sum();

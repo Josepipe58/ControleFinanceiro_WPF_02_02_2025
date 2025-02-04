@@ -74,7 +74,10 @@ namespace AppFinanceiroEF.Comandos
                 SelecionarControleDeUsuario = parameter switch
                 {
                     "Página Inicial" => new PaginaInicial_UC(),
-                    "Despesas" => new Despesa_UC(),                   
+                    "Despesas" => new Despesa_UC(),
+                    "Poupança" => new Poupanca_UC(),
+                    "Investimentos" => new Investimento_UC(),
+                    "Receitas" => new Receita_UC(),
                     "Categorias e SubCategorias" => new CategoriasESubCategorias_UC(),
                     "Anos" => new Ano_UC(),
                     "Aposentadoria" => new Aposentadoria_UC(),

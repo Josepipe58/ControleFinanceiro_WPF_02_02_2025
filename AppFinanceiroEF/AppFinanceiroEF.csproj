@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Imagens\Financeiro_2022.ico</ApplicationIcon>
@@ -62,9 +62,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\Categoria_UC.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Telas\CentralDeDados_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\Consultar\ConsultarDespesas_UC.xaml.cs">

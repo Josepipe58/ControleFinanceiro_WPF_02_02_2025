@@ -16,43 +16,43 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Janeiro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Janeiro")
+                    .Select(p => p.Valor).Sum();
                 meses.Fevereiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Fevereiro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Fevereiro")
+                    .Select(p => p.Valor).Sum();
                 meses.Marco =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Março")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Março")
+                    .Select(p => p.Valor).Sum();
                 meses.Abril =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Abril")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Abril")
+                    .Select(p => p.Valor).Sum();
                 meses.Maio =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Maio")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Maio")
+                    .Select(p => p.Valor).Sum();
                 meses.Junho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Junho")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Junho")
+                    .Select(p => p.Valor).Sum();
                 meses.Julho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Julho")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Julho")
+                    .Select(p => p.Valor).Sum();
                 meses.Agosto =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Agôsto")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Agôsto")
+                    .Select(p => p.Valor).Sum();
                 meses.Setembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Setembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Setembro")
+                    .Select(p => p.Valor).Sum();
                 meses.Outubro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Outubro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Outubro")
+                    .Select(p => p.Valor).Sum();
                 meses.Novembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Novembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Novembro")
+                    .Select(p => p.Valor).Sum();
                 meses.Dezembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita" && cd.Mes == "Dezembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita" && p.Mes == "Dezembro")
+                    .Select(p => p.Valor).Sum();
                 meses.TotalAno =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Tipo == "Receita").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Tipo == "Receita").Select(p => p.Valor).Sum();
 
                 listaDeMeses.Add(meses);
                 return listaDeMeses;
@@ -73,31 +73,31 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Janeiro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Janeiro").Select(p => p.Valor).Sum();
                 meses.Fevereiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Fevereiro").Select(p => p.Valor).Sum();
                 meses.Marco =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Março").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Março").Select(p => p.Valor).Sum();
                 meses.Abril =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Abril").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Abril").Select(p => p.Valor).Sum();
                 meses.Maio =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Maio").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Maio").Select(p => p.Valor).Sum();
                 meses.Junho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Junho").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Junho").Select(p => p.Valor).Sum();
                 meses.Julho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Julho").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Julho").Select(p => p.Valor).Sum();
                 meses.Agosto =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Agôsto").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Agôsto").Select(p => p.Valor).Sum();
                 meses.Setembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Setembro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Setembro").Select(p => p.Valor).Sum();
                 meses.Outubro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Outubro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Outubro").Select(p => p.Valor).Sum();
                 meses.Novembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Novembro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Novembro").Select(p => p.Valor).Sum();
                 meses.Dezembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Dezembro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Dezembro").Select(p => p.Valor).Sum();
                 meses.TotalAno =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum();
 
                 listaDeMeses.Add(meses);
                 return listaDeMeses;
@@ -118,44 +118,44 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Janeiro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Janeiro")
+                    .Select(p => p.Valor).Sum();
                 meses.Fevereiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Fevereiro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Fevereiro")
+                    .Select(p => p.Valor).Sum();
                 meses.Marco =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Março")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Março")
+                    .Select(p => p.Valor).Sum();
                 meses.Abril =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Abril")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Abril")
+                    .Select(p => p.Valor).Sum();
                 meses.Maio =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Maio")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Maio")
+                    .Select(p => p.Valor).Sum();
                 meses.Junho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Junho")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Junho")
+                    .Select(p => p.Valor).Sum();
                 meses.Julho =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Julho")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Julho")
+                    .Select(p => p.Valor).Sum();
                 meses.Agosto =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Agôsto")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Agôsto")
+                    .Select(p => p.Valor).Sum();
                 meses.Setembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Setembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Setembro")
+                    .Select(p => p.Valor).Sum();
                 meses.Outubro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Outubro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Outubro")
+                    .Select(p => p.Valor).Sum();
                 meses.Novembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Novembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Novembro")
+                    .Select(p => p.Valor).Sum();
                 meses.Dezembro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS" && cd.Mes == "Dezembro")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS" && p.Mes == "Dezembro")
+                    .Select(p => p.Valor).Sum();
                 meses.TotalAno =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Descontos no Benefício do INSS")
-                    .Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Descontos no Benefício do INSS")
+                    .Select(p => p.Valor).Sum();
 
                 listaDeMeses.Add(meses);
                 return listaDeMeses;
@@ -176,45 +176,45 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && new[] { "Saldo da Carteira", "Renda" }.Contains(cd.NomeDaCategoria) && cd.Mes == "Janeiro")
-                    .Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Janeiro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && new[] { "Saldo da Carteira", "Renda" }.Contains(p.NomeDaCategoria) && p.Mes == "Janeiro")
+                    .Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Janeiro").Select(p => p.Valor).Sum();
                 meses.Fevereiro =
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum();
+                    contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Fevereiro").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Fevereiro").Select(p => p.Valor).Sum();
                 meses.Marco =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Março").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Março").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Março").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Março").Select(p => p.Valor).Sum();
                 meses.Abril =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Abril").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Abril").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Abril").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Abril").Select(p => p.Valor).Sum();
                 meses.Maio =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Maio").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Maio").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Maio").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Maio").Select(p => p.Valor).Sum();
                 meses.Junho =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Junho").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Junho").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Junho").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Junho").Select(p => p.Valor).Sum();
                 meses.Julho =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Julho").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Julho").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Julho").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Julho").Select(p => p.Valor).Sum();
                 meses.Agosto =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Agôsto").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Agôsto").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Agôsto").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Agôsto").Select(p => p.Valor).Sum();
                 meses.Setembro =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Setembro").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Setembro").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Setembro").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Setembro").Select(p => p.Valor).Sum();
                 meses.Outubro =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Outubro").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Outubro").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Outubro").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Outubro").Select(p => p.Valor).Sum();
                 meses.Novembro =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Novembro").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Novembro").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Novembro").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Novembro").Select(p => p.Valor).Sum();
                 meses.Dezembro =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Dezembro").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Dezembro").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda" && p.Mes == "Dezembro").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Dezembro").Select(p => p.Valor).Sum();
                 meses.TotalAno =
-                     contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda").Select(cd => cd.Valor).Sum() -
-                    contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa").Select(cd => cd.Valor).Sum();
+                     contexto.TReceita.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum() -
+                    contexto.TReceita.Where(p => p.Ano == ano && p.Tipo == "Despesa").Select(p => p.Valor).Sum();
 
                 listaDeMeses.Add(meses);
                 return listaDeMeses;
@@ -235,146 +235,170 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                  contexto.TReceita.Where(cd => cd.Ano == ano && new[] { "Saldo da Carteira", "Renda" }.Contains(cd.NomeDaCategoria) && cd.Mes == "Janeiro")
-                  .Select(cd => cd.Valor).Sum() +
-                  contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Janeiro").Select(cd => cd.Valor).Sum() -
-                  (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Janeiro")
-                  .Select(cd => cd.Valor).Sum() +
-                  contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Janeiro")
-                  .Select(cd => cd.Valor).Sum() +
-                  contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Janeiro")
-                  .Select(cd => cd.Valor).Sum());
+                  contexto.TReceita.Where(r => r.Ano == ano && new[] { "Saldo da Carteira", "Renda" }.Contains(r.NomeDaCategoria) && r.Mes == "Janeiro")
+                  .Select(r => r.Valor).Sum() +
+                  contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Janeiro").Select(p => p.Valor).Sum() -
+                  (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Janeiro").Select(p => p.Valor).Sum() +
+
+                  contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Janeiro").Select(d => d.Valor).Sum() +
+
+                  contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Janeiro")
+                  .Select(p => p.Valor).Sum() +
+                  contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Janeiro")
+                  .Select(r => r.Valor).Sum());
 
                 meses.Fevereiro =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Fevereiro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Fevereiro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Fevereiro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Fevereiro")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && new[] { "Saldo da Carteira", "Renda" }.Contains(r.NomeDaCategoria) && r.Mes == "Fevereiro")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Fevereiro").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Fevereiro").Select(p => p.Valor).Sum() +
+
+                   contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Fevereiro").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Fevereiro")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Fevereiro")
+                   .Select(r => r.Valor).Sum());
                 meses.Fevereiro = meses.Janeiro + meses.Fevereiro;
 
                 meses.Marco =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Março")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Março").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Março")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Março")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Março")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Março")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Março").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Março").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Mrço").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Março")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Março")
+                   .Select(r => r.Valor).Sum());
                 meses.Marco = meses.Fevereiro + meses.Marco;
 
                 meses.Abril =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Abril")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Abril").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Abril")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Abril")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Abril")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Abril")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Abril").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Abril").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Abril").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Abril")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Abril")
+                   .Select(r => r.Valor).Sum());
                 meses.Abril = meses.Marco + meses.Abril;
 
                 meses.Maio =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Maio")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Maio").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Maio")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Maio")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Maio")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Maio")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Maio").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Maio").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Maio").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Maio")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Maio")
+                   .Select(r => r.Valor).Sum());
                 meses.Maio = meses.Abril + meses.Maio;
 
                 meses.Junho =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Junho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Junho").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Junho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Junho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Junho")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Junho")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Junho").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Junho").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Junho").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Junho")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Junho")
+                   .Select(r => r.Valor).Sum());
                 meses.Junho = meses.Maio + meses.Junho;
 
                 meses.Julho =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Julho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Julho").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Julho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Julho")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Julho")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Julho")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Julho").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Julho").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Julho").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Julho")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Julho")
+                   .Select(r => r.Valor).Sum());
                 meses.Julho = meses.Junho + meses.Julho;
 
                 meses.Agosto =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Agôsto")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Agôsto").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Agôsto")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Agôsto")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Agôsto")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Agôsto")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Agôsto").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Agôsto").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Agôsto").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Agôsto")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Agôsto")
+                   .Select(r => r.Valor).Sum());
                 meses.Agosto = meses.Julho + meses.Agosto;
 
                 meses.Setembro =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Setembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Setembro").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Setembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Setembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Setembro")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Setembro")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Setembro").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Setembro").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Setembro").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Setembro")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Setembro")
+                   .Select(r => r.Valor).Sum());
                 meses.Setembro = meses.Agosto + meses.Setembro;
 
                 meses.Outubro =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Outubro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Outubro").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Outubro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Outubro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Outubro")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Outubro")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Outubro").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Outubro").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Outubro").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Outubro")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Outubro")
+                   .Select(r => r.Valor).Sum());
                 meses.Outubro = meses.Setembro + meses.Outubro;
 
                 meses.Novembro =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Novembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Novembro").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Novembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && new[] { "Depósito", "Depósito Inicial" }.Contains(cd.NomeDaSubCategoria) && cd.Mes == "Novembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Novembro")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Novembro")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Novembro").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Novembro").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Novembro").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Novembro")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Novembro")
+                   .Select(r => r.Valor).Sum());
                 meses.Novembro = meses.Outubro + meses.Novembro;
 
                 meses.Dezembro =
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Dezembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Débito" && cd.Mes == "Dezembro").Select(cd => cd.Valor).Sum() -
-                   (contexto.TReceita.Where(cd => cd.Ano == ano && cd.Tipo == "Despesa" && cd.Mes == "Dezembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito" && cd.Mes == "Dezembro")
-                   .Select(cd => cd.Valor).Sum() +
-                   contexto.TReceita.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda" && cd.Mes == "Dezembro")
-                   .Select(cd => cd.Valor).Sum());
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Dezembro")
+                   .Select(r => r.Valor).Sum() +
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Débito" && p.Mes == "Dezembro").Select(p => p.Valor).Sum() -
+                   (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa" && p.Mes == "Dezembro").Select(p => p.Valor).Sum() +
+
+                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa" && d.Mes == "Dezembro").Select(d => d.Valor).Sum() +
+
+                   contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito" && p.Mes == "Dezembro")
+                   .Select(p => p.Valor).Sum() +
+                   contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Renda" && r.Mes == "Dezembro")
+                   .Select(r => r.Valor).Sum());
                 meses.Dezembro = meses.Novembro + meses.Dezembro;
 
                 meses.SaldoCarteira = meses.Dezembro;

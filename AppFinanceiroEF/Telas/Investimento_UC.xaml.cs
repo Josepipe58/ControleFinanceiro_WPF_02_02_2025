@@ -11,10 +11,10 @@ using System.Windows.Input;
 
 namespace AppFinanceiroEF.Telas
 {
-    public partial class Poupanca_UC : UserControl
+    public partial class Investimento_UC : UserControl
     {
         public string _nomeDoMetodo = string.Empty;
-        public Poupanca_UC()
+        public Investimento_UC()
         {
             InitializeComponent();
             CarregarComboBoxes();
@@ -35,7 +35,7 @@ namespace AppFinanceiroEF.Telas
             {
                 //Combobox de Categorias
                 Categoria_AD categoria_AD = new();
-                CbxCategoria.ItemsSource = categoria_AD.ObterCategoriasPorId(2);
+                CbxCategoria.ItemsSource = categoria_AD.ObterCategoriasPorId(4);
                 CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
                 CbxCategoria.SelectedValuePath = "Id";
                 CbxCategoria.SelectedIndex = 0;
@@ -50,7 +50,7 @@ namespace AppFinanceiroEF.Telas
                 CbxMes.ItemsSource = ListaDeStringMeses.CarregarComboBoxDeMeses();
                 CbxMes.SelectedIndex = 0;
 
-                CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDePoupanca();
+                CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDeInvestimento();
                 CbxTipo.SelectedIndex = 0;
             }
             catch (Exception erro)
@@ -77,11 +77,12 @@ namespace AppFinanceiroEF.Telas
         {
             try
             {
-                DtgDados.ItemsSource = Poupanca_AD.ObterPoupancaPorAno(Convert.ToInt32(CbxAno.Text));
+                DtgDados.ItemsSource = Investimento_AD.ObterInvestimentoPorAno(Convert.ToInt32(CbxAno.Text));
 
-                DtgValores.ItemsSource = RelatorioDePoupanca
-                        .RelatorioDoSaldoTotalDaPoupancaReceitasEInvestimentos(Convert.ToInt32(CbxAno.Text));
-                LblTituloDtgValores.Content = "Saldo Total da Poupança, Receitas e Investimentos.";
+                DtgValores.ItemsSource = RelatorioDeInvestimentos
+                         .RelatorioDoSaldoTotalDeInvestimentos(Convert.ToInt32(CbxAno.Text));
+                LblTituloDtgValores.Content = "Saldo Total de Investimentos.";
+
             }
             catch (Exception erro)
             {
@@ -97,8 +98,8 @@ namespace AppFinanceiroEF.Telas
         {
             if (TxtId.Text == "" && TxtValor.Text != "")
             {
-                Poupanca_AD poupanca_AD = new();
-                Poupanca poupanca = new()
+                Investimento_AD investimento_AD = new();
+                Investimento investimento = new()
                 {
                     NomeDaCategoria = CbxCategoria.Text,
                     NomeDaSubCategoria = CbxSubCategoria.Text,
@@ -121,18 +122,18 @@ namespace AppFinanceiroEF.Telas
                     Ano = Convert.ToInt32(CbxAno.Text)
                 };
 
-               
-                if (CbxCategoria.Text == "Renda")
+
+                if (CbxCategoria.Text == "Renda de Investimentos")
                 {
                     try
                     {
-                        if (CbxCategoria.Text == "Renda")//Não mudar esses dois ifs senão dá erro
+                        if (CbxCategoria.Text == "Renda de Investimentos")//Não mudar esses dois ifs senão dá erro
                             receita_AD.Cadastrar(receita);
-                        if (CbxCategoria.Text == "Renda")
-                            poupanca_AD.Cadastrar(poupanca);
+                        if (CbxCategoria.Text == "Renda de Investimentos")
+                            investimento_AD.Cadastrar(investimento);
 
                         MessageBox.Show("O registro de Receita foi cadastrado com sucesso. Código do registro: " + receita.Id + "\n" +
-                           "O registro de Poupança foi cadastrado com sucesso.Código do registro: " + poupanca.Id, "Aviso", 
+                           "O registro de Investimento foi cadastrado com sucesso.Código do registro: " + investimento.Id, "Aviso",
                            MessageBoxButton.OK, MessageBoxImage.Information);
 
                         LimparEAtualizarDados();
@@ -148,8 +149,8 @@ namespace AppFinanceiroEF.Telas
                 {
                     try
                     {
-                        poupanca_AD.Cadastrar(poupanca);
-                        GerenciarMensagens.SucessoAoCadastrar(poupanca.Id);
+                        investimento_AD.Cadastrar(investimento);
+                        GerenciarMensagens.SucessoAoCadastrar(investimento.Id);
                         LimparEAtualizarDados();
                     }
                     catch (Exception erro)
@@ -180,8 +181,8 @@ namespace AppFinanceiroEF.Telas
             {
                 try
                 {
-                    Poupanca_AD poupanca_AD = new();
-                    Poupanca poupanca = new()
+                    Investimento_AD investimento_AD = new();
+                    Investimento investimento = new()
                     {
                         Id = Convert.ToInt32(TxtId.Text),
                         NomeDaCategoria = CbxCategoria.Text,
@@ -192,9 +193,9 @@ namespace AppFinanceiroEF.Telas
                         Mes = CbxMes.Text,
                         Ano = Convert.ToInt32(CbxAno.Text)
                     };
-                    poupanca_AD.Alterar(poupanca);
+                    investimento_AD.Alterar(investimento);
 
-                    GerenciarMensagens.SucessoAoAlterar(poupanca.Id);
+                    GerenciarMensagens.SucessoAoAlterar(investimento.Id);
                     LimparEAtualizarDados();
                 }
                 catch (Exception erro)
@@ -227,14 +228,14 @@ namespace AppFinanceiroEF.Telas
                 {
                     try
                     {
-                        Poupanca_AD poupanca_AD = new();
-                        Poupanca poupanca = new()
+                        Investimento_AD investimento_AD = new();
+                        Investimento investimento = new()
                         {
                             Id = Convert.ToInt32(TxtId.Text)
                         };
-                        poupanca_AD.Excluir(poupanca.Id);
+                        investimento_AD.Excluir(investimento.Id);
 
-                        GerenciarMensagens.SucessoAoExcluir(poupanca.Id);
+                        GerenciarMensagens.SucessoAoExcluir(investimento.Id);
                         LimparEAtualizarDados();
                     }
                     catch (Exception erro)
@@ -269,17 +270,17 @@ namespace AppFinanceiroEF.Telas
             {
                 if (DtgDados.SelectedItems.Count >= 0)
                 {
-                    if (DtgDados.SelectedItems[0].GetType() == typeof(Poupanca))
+                    if (DtgDados.SelectedItems[0].GetType() == typeof(Investimento))
                     {
-                        Poupanca poupanca = (Poupanca)DtgDados.SelectedItems[0];
-                        TxtId.Text = poupanca.Id.ToString();
-                        CbxCategoria.Text = poupanca.NomeDaCategoria.ToString();
-                        CbxSubCategoria.Text = poupanca.NomeDaSubCategoria.ToString();
-                        TxtValor.Text = poupanca.Valor.ToString();
-                        CbxTipo.Text = poupanca.Tipo.ToString();
-                        DtpData.Text = poupanca.Data.ToString();
-                        CbxMes.Text = poupanca.Mes.ToString();
-                        CbxAno.Text = poupanca.Ano.ToString();
+                        Investimento investimento = (Investimento)DtgDados.SelectedItems[0];
+                        TxtId.Text = investimento.Id.ToString();
+                        CbxCategoria.Text = investimento.NomeDaCategoria.ToString();
+                        CbxSubCategoria.Text = investimento.NomeDaSubCategoria.ToString();
+                        TxtValor.Text = investimento.Valor.ToString();
+                        CbxTipo.Text = investimento.Tipo.ToString();
+                        DtpData.Text = investimento.Data.ToString();
+                        CbxMes.Text = investimento.Mes.ToString();
+                        CbxAno.Text = investimento.Ano.ToString();
                         TxtValor.Focus();
                     }
                 }
@@ -337,7 +338,7 @@ namespace AppFinanceiroEF.Telas
         {
             CbxTipo.SelectedIndex = 0;
             CbxMes.SelectedIndex = 0;
-            CbxAno.SelectedIndex = 0;            
+            CbxAno.SelectedIndex = 0;
             CbxCategoria.SelectedIndex = 0;
             CbxSubCategoria.SelectedIndex = 0;
             DtpData.SelectedDate = DateTime.Now;

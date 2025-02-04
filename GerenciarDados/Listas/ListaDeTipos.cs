@@ -18,8 +18,7 @@
                 "Crédito",
                 "Despesa",
                 "Débito",
-                "Receita",
-                "Carteira",
+                "Receita",               
                 "Saldo Anterior"
 
             };
@@ -34,6 +33,18 @@
                "Débito",
                "Saldo Anterior",
                "Saldo Inicial"
+            };
+            return listaDetipos;
+        }
+
+        public static List<string> ListaDeTiposDeReceita()
+        {
+            var listaDetipos = new List<string>()
+            {
+                "Crédito",
+                "Receita",
+                "Carteira",
+                "Saldo Anterior"
             };
             return listaDetipos;
         }

@@ -11,11 +11,10 @@ using System.Windows.Input;
 
 namespace AppFinanceiroEF.Telas
 {
-    public partial class CentralDeDados_UC : UserControl
+    public partial class Receita_UC : UserControl
     {
         public string _nomeDoMetodo = string.Empty;
-
-        public CentralDeDados_UC()
+        public Receita_UC()
         {
             InitializeComponent();
             CarregarComboBoxes();
@@ -34,11 +33,13 @@ namespace AppFinanceiroEF.Telas
             }
             try
             {
-                FiltrarCategoria_AD filtroDeControle_AD = new();
-                CbxNomeDeFiltros.ItemsSource = filtroDeControle_AD.SelecionarTodos();
-                CbxNomeDeFiltros.DisplayMemberPath = "NomeDoFiltro";
-                CbxNomeDeFiltros.SelectedValuePath = "Id";
-                CbxNomeDeFiltros.SelectedIndex = 0;
+                //Combobox de Categorias
+                Categoria_AD categoria_AD = new();
+                CbxCategoria.ItemsSource = categoria_AD.ObterCategoriasPorId(3);
+                CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
+                CbxCategoria.SelectedValuePath = "Id";
+                CbxCategoria.SelectedIndex = 0;
+                TxtValor.Focus();
 
                 Ano_AD ano_AD = new();
                 CbxAno.ItemsSource = ano_AD.SelecionarTodos();
@@ -49,7 +50,7 @@ namespace AppFinanceiroEF.Telas
                 CbxMes.ItemsSource = ListaDeStringMeses.CarregarComboBoxDeMeses();
                 CbxMes.SelectedIndex = 0;
 
-                CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDeDespesa();
+                CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDeReceita();
                 CbxTipo.SelectedIndex = 0;
             }
             catch (Exception erro)
@@ -59,47 +60,6 @@ namespace AppFinanceiroEF.Telas
                 return;
             }
             LimparEAtualizarDados();
-        }
-
-        private void CarregarComboBoxDeTipos()
-        {
-            try
-            {
-                //ComboBox de Tipos.
-                if (CbxNomeDeFiltros.Text == "Despesa")
-                {
-                    CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDeDespesa();
-                    CbxTipo.SelectedIndex = 0;
-                }
-                else if (CbxNomeDeFiltros.Text == "Poupança")
-                {
-                    CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDePoupanca();
-                    CbxTipo.SelectedIndex = 0;
-                }
-                else if (CbxNomeDeFiltros.Text == "Investimento")
-                {
-                    CbxTipo.ItemsSource = ListaDeTipos.ListaDeTiposDeInvestimento();
-                    CbxTipo.SelectedIndex = 0;
-                }
-            }
-            catch (Exception erro)
-            {
-                _nomeDoMetodo = "CarregarComboBoxDeTipos";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return;
-            }
-
-        }
-
-        private void CbxNomeDeFiltros_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Categoria_AD categoria_AD = new();
-            CbxCategoria.ItemsSource = categoria_AD
-                .ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
-            CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
-            CbxCategoria.SelectedValuePath = "Id";
-            CbxCategoria.SelectedIndex = 0;
-            TxtValor.Focus();
         }
 
         private void CbxCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -117,26 +77,10 @@ namespace AppFinanceiroEF.Telas
         {
             try
             {
-                DtgDados.ItemsSource = Despesa_AD.ObterDespesaPorAno(Convert.ToInt32(CbxAno.Text));
+                DtgDados.ItemsSource =  Receita_AD.ObterReceitaPorAno(Convert.ToInt32(CbxAno.Text));
 
-                if (CbxNomeDeFiltros.Text == "Despesa")
-                {
-                    DtgValores.ItemsSource = RelatorioDeDespesas.RelatorioDeDespesasGerais(Convert.ToInt32(CbxAno.Text));
-                    LblTituloDtgValores.Content = "Despesas Totais - Mensal e Anual";
-                }
-                else if (CbxNomeDeFiltros.Text == "Poupança")
-                {
-                    DtgValores.ItemsSource = RelatorioDePoupanca
-                        .RelatorioDoSaldoTotalDaPoupancaReceitasEInvestimentos(Convert.ToInt32(CbxAno.Text));
-                    LblTituloDtgValores.Content = "Saldo Total da Poupança, Receitas e Investimentos.";
-                }
-                else
-                {
-                    DtgValores.ItemsSource = RelatorioDeInvestimentos
-                        .RelatorioDoSaldoTotalDeInvestimentos(Convert.ToInt32(CbxAno.Text));
-                    LblTituloDtgValores.Content = "Saldo Total de Investimentos.";
-                }
-
+                DtgValores.ItemsSource = RelatorioDeReceitas.RelatorioDeBenefíciosDoINSS(Convert.ToInt32(CbxAno.Text));
+                LblTituloDtgValores.Content = "Benefícios do INSS - Mensal e Anual";
             }
             catch (Exception erro)
             {
@@ -154,20 +98,20 @@ namespace AppFinanceiroEF.Telas
             {
                 try
                 {
-                    Despesa_AD despesa_AD = new();
-                    Despesa despesa = new()
+                     Receita_AD  receita_AD = new();
+                     Receita  receita = new()
                     {
                         NomeDaCategoria = CbxCategoria.Text,
                         NomeDaSubCategoria = CbxSubCategoria.Text,
-                        Valor = Convert.ToDecimal(TxtValor.Text.Replace("R$", "")),                        
+                        Valor = Convert.ToDecimal(TxtValor.Text.Replace("R$", "")),
                         Tipo = CbxTipo.Text,
                         Data = Convert.ToDateTime(DtpData.Text),
                         Mes = CbxMes.Text,
                         Ano = Convert.ToInt32(CbxAno.Text)
                     };
-                    despesa_AD.Cadastrar(despesa);
+                     receita_AD.Cadastrar( receita);
 
-                    GerenciarMensagens.SucessoAoCadastrar(despesa.Id);
+                    GerenciarMensagens.SucessoAoCadastrar( receita.Id);
                     LimparEAtualizarDados();
                 }
                 catch (Exception erro)
@@ -197,8 +141,8 @@ namespace AppFinanceiroEF.Telas
             {
                 try
                 {
-                    Despesa_AD despesa_AD = new();
-                    Despesa despesa = new()
+                     Receita_AD  receita_AD = new();
+                     Receita  receita = new()
                     {
                         Id = Convert.ToInt32(TxtId.Text),
                         NomeDaCategoria = CbxCategoria.Text,
@@ -209,9 +153,9 @@ namespace AppFinanceiroEF.Telas
                         Mes = CbxMes.Text,
                         Ano = Convert.ToInt32(CbxAno.Text)
                     };
-                    despesa_AD.Alterar(despesa);
+                     receita_AD.Alterar( receita);
 
-                    GerenciarMensagens.SucessoAoAlterar(despesa.Id);
+                    GerenciarMensagens.SucessoAoAlterar( receita.Id);
                     LimparEAtualizarDados();
                 }
                 catch (Exception erro)
@@ -244,14 +188,14 @@ namespace AppFinanceiroEF.Telas
                 {
                     try
                     {
-                        Despesa_AD despesa_AD = new();
-                        Despesa despesa = new()
+                         Receita_AD  receita_AD = new();
+                         Receita  receita = new()
                         {
                             Id = Convert.ToInt32(TxtId.Text)
                         };
-                        despesa_AD.Excluir(despesa.Id);
+                         receita_AD.Excluir( receita.Id);
 
-                        GerenciarMensagens.SucessoAoExcluir(despesa.Id);
+                        GerenciarMensagens.SucessoAoExcluir( receita.Id);
                         LimparEAtualizarDados();
                     }
                     catch (Exception erro)
@@ -286,17 +230,17 @@ namespace AppFinanceiroEF.Telas
             {
                 if (DtgDados.SelectedItems.Count >= 0)
                 {
-                    if (DtgDados.SelectedItems[0].GetType() == typeof(Despesa))
+                    if (DtgDados.SelectedItems[0].GetType() == typeof( Receita))
                     {
-                        Despesa despesa = (Despesa)DtgDados.SelectedItems[0];
-                        TxtId.Text = despesa.Id.ToString();
-                        CbxCategoria.Text = despesa.NomeDaCategoria.ToString();
-                        CbxSubCategoria.Text = despesa.NomeDaSubCategoria.ToString();
-                        TxtValor.Text = despesa.Valor.ToString();                        
-                        CbxTipo.Text = despesa.Tipo.ToString();
-                        DtpData.Text = despesa.Data.ToString();
-                        CbxMes.Text = despesa.Mes.ToString();
-                        CbxAno.Text = despesa.Ano.ToString();
+                         Receita  receita = ( Receita)DtgDados.SelectedItems[0];
+                        TxtId.Text =  receita.Id.ToString();
+                        CbxCategoria.Text =  receita.NomeDaCategoria.ToString();
+                        CbxSubCategoria.Text =  receita.NomeDaSubCategoria.ToString();
+                        TxtValor.Text =  receita.Valor.ToString();
+                        CbxTipo.Text =  receita.Tipo.ToString();
+                        DtpData.Text =  receita.Data.ToString();
+                        CbxMes.Text =  receita.Mes.ToString();
+                        CbxAno.Text =  receita.Ano.ToString();
                         TxtValor.Focus();
                     }
                 }
@@ -333,7 +277,6 @@ namespace AppFinanceiroEF.Telas
 
         private void CbxNomeDeFiltros_MouseLeave(object sender, MouseEventArgs e)
         {
-            CarregarComboBoxDeTipos();
             CarregarDataGridDeDadosEValores();
         }
 
@@ -357,7 +300,6 @@ namespace AppFinanceiroEF.Telas
             CbxTipo.SelectedIndex = 0;
             CbxMes.SelectedIndex = 0;
             CbxAno.SelectedIndex = 0;
-            CbxNomeDeFiltros.SelectedIndex = 0;
             CbxCategoria.SelectedIndex = 0;
             CbxSubCategoria.SelectedIndex = 0;
             DtpData.SelectedDate = DateTime.Now;

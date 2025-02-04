@@ -7,7 +7,7 @@ namespace GerenciarDados.AcessarDados
     public class Investimento_AD : Repositorio<Investimento>
     {
         public Investimento_AD(bool Save = true) : base(Save) { }
-        public static List<Investimento> ObterInvestimentoPorId(int ano)
+        public static List<Investimento> ObterInvestimentoPorAno(int ano)
         {
             try
             {

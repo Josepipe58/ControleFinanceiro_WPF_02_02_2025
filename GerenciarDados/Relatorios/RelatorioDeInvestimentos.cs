@@ -16,13 +16,13 @@ namespace GerenciarDados.Relatorios
                 ListaDeMeses listaDeMeses = new();
                 using var contexto = new Contexto();
                 meses.Janeiro =
-                    contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Saldo do Ano Anterior",
+                    contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Saldo Anterior",
                         "Juros de Investimentos", "Depósito" }.Contains(cd.NomeDaSubCategoria) && cd.Mes == "Janeiro").Select(cd => cd.Valor).Sum() -
                     contexto.TInvestimento.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Saque"
                     && cd.Mes == "Janeiro").Select(cd => cd.Valor).Sum();
 
                 meses.Fevereiro = meses.Janeiro +
-                    contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Juros de Investimentos", "Depósito" }
+                    contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Saldo Anterior", "Juros de Investimentos", "Depósito" }
                     .Contains(cd.NomeDaSubCategoria) && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum() -
                     contexto.TInvestimento.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Saque"
                     && cd.Mes == "Fevereiro").Select(cd => cd.Valor).Sum();

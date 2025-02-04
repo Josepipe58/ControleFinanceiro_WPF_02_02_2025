@@ -173,7 +173,7 @@
                             <Setter Property="Background" TargetName="border" Value="#FF0509EC"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="border" Value="#FF10A990"/>
+                            <Setter Property="Background" TargetName="border" Value="#FF076962"/>
                             <Setter Property="Visibility" TargetName="Highlighter" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
