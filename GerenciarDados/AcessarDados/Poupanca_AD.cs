@@ -1,0 +1,37 @@
+﻿using AcessarBancoDados.ContextoDeDados;
+using AcessarBancoDados.Modelos;
+using GerenciarDados.Mensagens;
+
+namespace GerenciarDados.AcessarDados
+{
+    public class Poupanca_AD : Repositorio<Poupanca>
+    {
+        public Poupanca_AD(bool Save = true) : base(Save) { }
+        public static List<Poupanca> ObterPoupancaPorId(int ano)
+        {
+            try
+            {
+                using Contexto contexto = new();
+                var listaDePoupanca = contexto.TPoupanca.Select(p => new Poupanca()
+                {
+                    Id = p.Id,
+                    NomeDaCategoria = p.NomeDaCategoria,
+                    NomeDaSubCategoria = p.NomeDaSubCategoria,
+                    Valor = p.Valor,
+                    Tipo = p.Tipo,
+                    Data = p.Data.Date,
+                    Mes = p.Mes,
+                    Ano = p.Ano,
+                }).Where(p => p.Ano == ano).OrderByDescending(p => p.Id);
+
+                return listaDePoupanca.ToList();
+            }
+            catch (Exception erro)
+            {
+                _nomeDoMetodo = "ObterPoupancaPorId";
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                return new List<Poupanca>();
+            }
+        }
+    }
+}

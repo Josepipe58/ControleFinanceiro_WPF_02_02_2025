@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Imagens\Financeiro_2022.ico</ApplicationIcon>
+    <StartupObject>AppFinanceiroEF.App</StartupObject>
+    <SignAssembly>False</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Imagens\back_icon.png" />
+    <None Remove="Imagens\Cachoeira.jpg" />
+    <None Remove="Imagens\close_icon.png" />
+    <None Remove="Imagens\close_mo_icon.png" />
+    <None Remove="Imagens\controle_financeiro_azulclaro.png" />
+    <None Remove="Imagens\Financeiro_2020.ico" />
+    <None Remove="Imagens\Financeiro_2022.ico" />
+    <None Remove="Imagens\max_def.png" />
+    <None Remove="Imagens\max_mo.png" />
+    <None Remove="Imagens\stock_icon.png" />
+    <None Remove="Imagens\Universo01.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Imagens\Financeiro_2022.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcessarBancoDados\AcessarBancoDados.csproj" />    
+    <ProjectReference Include="..\GerenciarDados\GerenciarDados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Imagens\back_icon.png" />
+    <Resource Include="Imagens\Cachoeira.jpg" />
+    <Resource Include="Imagens\close_icon.png" />
+    <Resource Include="Imagens\close_mo_icon.png" />
+    <Resource Include="Imagens\controle_financeiro_azulclaro.png" />
+    <Resource Include="Imagens\Financeiro_2020.ico" />
+    <Resource Include="Imagens\max_def.png" />
+    <Resource Include="Imagens\max_mo.png" />
+    <Resource Include="Imagens\stock_icon.png" />
+    <Resource Include="Imagens\Universo01.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Telas\Ano_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Aposentadoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Categoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\CentralDeDados_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Consultar\ConsultarDespesas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Consultar\ConsultarFinancas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\MenuIniciar\TelaPrincipal.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\PaginaInicial_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\RelatoriosEConsultas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeDespesas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeInvestimentos_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDePoupanca_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeReceitas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\SubCategoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
