@@ -4,26 +4,24 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Categoria_AD : Repositorio<Categoria>
+    public class Categoria_AD(bool Save = true) : Repositorio<Categoria>(Save)
     {
-        public Categoria_AD(bool Save = true) : base(Save) { }
-
-        public List<Categoria> ObterCategoriasPorId(int id)
+        public static List<Categoria> ObterCategoriasPorId(int id)
         {
             try
             {
-                List<Categoria> listaDeCategorias = new();
+                List<Categoria> listaDeCategorias = [];
                 using var contexto = new Contexto();
                 listaDeCategorias = contexto.TCategoria
                     .Where(c => c.FiltrarCategoriaId == id).OrderBy(c => c.NomeDaCategoria).ToList();
 
                 return listaDeCategorias;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterCategoriasPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<Categoria>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
 
@@ -46,12 +44,12 @@ namespace GerenciarDados.AcessarDados
 
                 return listaDeCategorias.ToList();
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterCategorias";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
 
-                return new List<Categoria>();
+                return [];
             }
         }
     }

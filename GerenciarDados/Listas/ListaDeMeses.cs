@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GerenciarDados.Listas
+﻿namespace GerenciarDados.Listas
 {
     public class Meses
     {

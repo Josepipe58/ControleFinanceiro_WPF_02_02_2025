@@ -21,83 +21,63 @@
 
             <!--| Título da Grid Superior |-->
             <TextBlock Text="Cadastrar, Alterar e Excluir Aposentadorias" FontSize="30" Foreground="White" Width="581"
-                       Margin="250,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                       Margin="500,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
             <!--| Rótulos(Label) |-->
-            <Label Content="Saldo anterior a partir de 2011" Style="{DynamicResource LabelTransparente}" Margin="10,60,0,0"/>
+            <Label Content="Saldo anterior a partir de 2011" Style="{DynamicResource LabelTransparente}" Margin="118,15,0,0"/>
 
-            <Label Content="Código" Style="{DynamicResource LabelTransparente}" Margin="362,60,0,0"/>
+            <Label Content="Código" Style="{DynamicResource LabelTransparente}" Margin="26,15,0,0"/>
 
-            <Label Content="Data" Style="{DynamicResource LabelTransparente}" Margin="456,62,0,0"/>
+            <Label Content="Data" Style="{DynamicResource LabelTransparente}" Margin="26,80,0,0"/>
 
-            <Label Content="Ano do Índice" Style="{DynamicResource LabelTransparente}" Margin="690,60,0,0"/>
+            <Label Content="Ano do Índice" Style="{DynamicResource LabelTransparente}" Margin="20,142,0,0"/>
 
-            <Label Content="Ano do Reajuste" Style="{DynamicResource LabelTransparente}" Margin="875,62,0,0"/>
+            <Label Content="Ano do Reajuste" Style="{DynamicResource LabelTransparente}" Margin="208,142,0,0"/>
 
-            <Label Content="Indice do Aumento" Style="{DynamicResource LabelTransparente}" Margin="685,135,0,0"/>
+            <Label Content="Indice do Aumento" Style="{DynamicResource LabelTransparente}" Margin="382,142,0,0"/>
 
-            <Label Content="Ano" Style="{DynamicResource LabelTransparente}" Margin="865,5,0,0"/>
+            <Label Content="Valor do Aumento" Style="{DynamicResource LabelTransparente}" Margin="572,142,0,0"/>
 
-            <Label Content="Valor do Aumento" Style="{DynamicResource LabelTransparente}" Margin="870,135,0,0"/>
+            <Label Content="Atualizar Valor" Style="{DynamicResource LabelTransparente}" Margin="939,62,0,0" Width="170"/>
 
-            <Label Content="Atualizar Valor" Style="{DynamicResource LabelTransparente}" Margin="1040,135,0,0"/>
-
-            <Label Content="Saldo da Carteira" Style="{DynamicResource LabelTransparente}" Margin="1060,10,0,0"/>
-
-            <Label Content="Saldo da Poupança" Style="{DynamicResource LabelTransparente}" Margin="1275,10,0,0"/>
-
-            <Label Content="Saldo de Investimentos" Style="{DynamicResource LabelTransparente}" Margin="1060,75,0,0"/>
-
-            <Label Content="Saldo Total" Style="{DynamicResource LabelTransparente}" Margin="1275,71,0,0"/>
-
-            <Label Content="Saldo Atual da Aposentadoeia" Style="{DynamicResource LabelTransparente}" Margin="1215,140,0,0" Width="255"/>
+            <Label Content="Saldo Atual da Aposentadoeia" Style="{DynamicResource LabelTransparente}" Margin="1166,62,0,0" Width="255"/>
 
             <!--| Calendário |-->
-            <DatePicker x:Name="DtpData" Style="{DynamicResource CalendarioDatePicker}" Margin="461,92,0,0"/>
+            <DatePicker x:Name="DtpData" Style="{DynamicResource CalendarioDatePicker}" Margin="31,106,0,0"/>
 
             <!--| TextBoxes |-->
-            <TextBox x:Name="TxtId" Width="84" Style="{DynamicResource TxtBrancoEBordaAzul}" Margin="367,90,0,0" IsReadOnly="True"/>
+            <TextBox x:Name="TxtId" Width="84" Style="{DynamicResource TxtBrancoEBordaAzul}" Margin="31,40,0,0" IsReadOnly="True"/>
 
-            <TextBox x:Name="TxtAnoDoIndice" Style="{DynamicResource TextBoxAzulMarinho}" Margin="690,90,0,0" Width="165"/>
+            <TextBox x:Name="TxtAnoDoIndice" Style="{DynamicResource TextBoxAzulMarinho}" Margin="26,170,0,0" Width="165"/>
 
-            <TextBox x:Name="TxtAnoDoReajuste" Style="{DynamicResource TextBoxAzulMarinho}" Margin="875,90,0,0"/>
+            <TextBox x:Name="TxtAnoDoReajuste" Style="{DynamicResource TextBoxAzulMarinho}" Margin="214,170,0,0"/>
 
-            <TextBox x:Name="TxtIndiceDoAumento" Style="{DynamicResource TextBoxAzulMarinho}" Margin="690,160,0,0" Width="165"
+            <TextBox x:Name="TxtIndiceDoAumento" Style="{DynamicResource TextBoxAzulMarinho}" Margin="389,170,0,0" Width="165"
                      KeyDown="TxtIndiceDoAumento_KeyDown"/>
 
-            <TextBox x:Name="TxtValorDoAumento" Style="{DynamicResource TextBoxAzulMarinho}" Margin="875,160,0,0"/>
+            <TextBox x:Name="TxtValorDoAumento" Style="{DynamicResource TextBoxAzulMarinho}" Margin="579,170,0,0"/>
 
-            <TextBox x:Name="TxtAtualizarValor" Style="{DynamicResource TextBoxAzulMarinho}" Margin="1050,160,0,0"
-                     KeyDown="TxtAtualizarValor_KeyDown" Text="0,00"/>
+            <TextBox x:Name="TxtAtualizarValor" Style="{DynamicResource TextBoxAzulMarinho}" Margin="946,87,0,0"
+                     KeyDown="TxtAtualizarValor_KeyDown" Text="0,00" Width="200"/>
 
-            <TextBox x:Name="TxtCarteira" Text="R$ 0,00" Width="190" Style="{DynamicResource TextBoxVerde}" Margin="1070,35,0,0"/>
-
-            <TextBox x:Name="TxtPoupanca" Text="R$ 0,00" Style="{DynamicResource TextBoxVerde}" Margin="1280,35,0,0"/>
-
-            <TextBox x:Name="TxtInvestimento" Text="R$ 0,00" Style="{DynamicResource TextBoxVerde}" Margin="1070,100,0,0"/>
-
-            <TextBox x:Name="TxtPoupancaEInvestimento" Text="R$ 0,00" Style="{DynamicResource TextBoxVerde}" Margin="1280,100,0,0"/>
-
-            <TextBox x:Name="TxtSaldoAtual" Width="245" Style="{DynamicResource TxtBrancoEBordaAzul}" Margin="1225,164,0,0"/>
+            <TextBox x:Name="TxtSaldoAtual" Width="250" Style="{DynamicResource TxtBrancoEBordaAzul}" Margin="1171,86,0,0"/>
 
             <!--| Botões |-->
-            <Button x:Name="BtnCadastrar" Content="Cadastrar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="72,152,0,0" 
+            <Button x:Name="BtnCadastrar" Content="Cadastrar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="865,157,0,0" 
                     Click="BtnCadastrar_Click"/>
 
-            <Button x:Name="BtnAlterar" Content="Alterar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="218,152,0,0"  
+            <Button x:Name="BtnAlterar" Content="Alterar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="1011,157,0,0"  
                      Click="BtnAlterar_Click" />
 
-            <Button x:Name="BtnExcluir" Content="Excluir" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="362,152,0,0" 
+            <Button x:Name="BtnExcluir" Content="Excluir" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="1155,157,0,0" 
                     Click="BtnExcluir_Click"/>
 
-            <Button x:Name="BtnAtualizar" Content="Atualizar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="508,152,0,0" 
+            <Button x:Name="BtnAtualizar" Content="Atualizar" Style="{StaticResource BtnAzulEscuroEAzulClaro}" Margin="1301,157,0,0" 
                     Click="BtnAtualizar_Click"/>
 
             <!--| ComboBox |-->
-            <ComboBox x:Name="CbxSaldoAnterior" Width="240" Style="{DynamicResource ComboBoxAzulMarinho}" Margin="24,90,0,0"
+            <ComboBox x:Name="CbxSaldoAnterior" Width="240" Style="{DynamicResource ComboBoxAzulMarinho}" Margin="132,40,0,0"
                       MouseLeave="CbxSaldoAnterior_MouseLeave"/>
-
-            <ComboBox Name="CbxAno" Style="{DynamicResource ComboBoxAzulMarinho}" Margin="865,27,0,0" MouseLeave="CbxAno_MouseLeave"/>
         </Grid>
 
         <!--| Grid Inferior |-->

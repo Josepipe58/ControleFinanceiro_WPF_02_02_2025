@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AppFinanceiroEF.Telas
+namespace AppFinanceiroEF.Telas.SubCategprias
 {
     public partial class SubCategoria_UC : UserControl
     {
@@ -29,10 +29,10 @@ namespace AppFinanceiroEF.Telas
                 CbxNomeDeFiltros.SelectedValuePath = "Id";
                 CbxNomeDeFiltros.SelectedIndex = 0;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarComboBox";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             LimparEAtualizarDados();
@@ -41,7 +41,7 @@ namespace AppFinanceiroEF.Telas
         private void CbxNomeDeFiltros_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Categoria_AD categoria_AD = new();
-            CbxCategoria.ItemsSource = categoria_AD.ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
+            CbxCategoria.ItemsSource = Categoria_AD.ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
             CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
             CbxCategoria.SelectedValuePath = "Id";
             CbxCategoria.SelectedIndex = 0;
@@ -74,10 +74,10 @@ namespace AppFinanceiroEF.Telas
                         .Where(sc => sc.NomeDoFiltro == "Investimento");
                 }
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarDataGrid";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             TxtSubCategoria.Focus();
@@ -100,10 +100,10 @@ namespace AppFinanceiroEF.Telas
                     GerenciarMensagens.SucessoAoCadastrar(subCategoria.Id);
                     LimparEAtualizarDados();
                 }
-                catch (Exception erro)
+                catch (Exception ex)
                 {
                     _nomeDoMetodo = "BtnCadastrar_Click";
-                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                     return;
                 }
             }
@@ -139,10 +139,10 @@ namespace AppFinanceiroEF.Telas
                     GerenciarMensagens.SucessoAoAlterar(subCategoria.Id);
                     LimparEAtualizarDados();
                 }
-                catch (Exception erro)
+                catch (Exception ex)
                 {
                     _nomeDoMetodo = "BtnAlterar_Click";
-                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                     return;
                 }
             }
@@ -179,10 +179,10 @@ namespace AppFinanceiroEF.Telas
                         GerenciarMensagens.SucessoAoExcluir(subCategoria.Id);
                         LimparEAtualizarDados();
                     }
-                    catch (Exception erro)
+                    catch (Exception ex)
                     {
                         _nomeDoMetodo = "BtnExcluir_Click";
-                        GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                        GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                         return;
                     }
                 }

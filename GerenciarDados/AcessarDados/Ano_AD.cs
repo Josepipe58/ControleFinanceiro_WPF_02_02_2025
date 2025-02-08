@@ -2,8 +2,7 @@
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Ano_AD : Repositorio<Ano>
+    public class Ano_AD(bool save = true) : Repositorio<Ano>(save)
     {
-        public Ano_AD(bool save = true) : base(save) { }
     }
 }

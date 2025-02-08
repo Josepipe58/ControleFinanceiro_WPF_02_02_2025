@@ -1,6 +1,5 @@
 ﻿using AcessarBancoDados.Modelos;
 using GerenciarDados.AcessarDados;
-using GerenciarDados.Consultas;
 using GerenciarDados.Mensagens;
 using System;
 using System.Windows;
@@ -38,17 +37,11 @@ namespace AppFinanceiroEF.Telas
                 CbxSaldoAnterior.DisplayMemberPath = "SaldoAtual";
                 CbxSaldoAnterior.SelectedValuePath = "Id";
                 CbxSaldoAnterior.SelectedIndex = 0;
-
-                Ano_AD ano_AD = new();
-                CbxAno.ItemsSource = ano_AD.SelecionarTodos();
-                CbxAno.DisplayMemberPath = "AnoDoCadastro";
-                CbxAno.SelectedValuePath = "Id";
-                CbxAno.SelectedIndex = 0;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ComboBoxesDeAposentadorias";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             LimparEAtualizarDados();
@@ -60,14 +53,13 @@ namespace AppFinanceiroEF.Telas
             {
                 DtgDados.ItemsSource = Aposentadoria_AD.ConsultarAposentadorias();
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "DataGridDeAposentadorias";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             TxtAnoDoIndice.Focus();
-            SaldoDaCarteiraPoupancaEInvestimentos();
         }
 
         public void CalcularReajusteDaAposentadoria()
@@ -130,10 +122,10 @@ namespace AppFinanceiroEF.Telas
                     GerenciarMensagens.SucessoAoCadastrar(aposentadoria.Id);
                     LimparEAtualizarDados();
                 }
-                catch (Exception erro)
+                catch (Exception ex)
                 {
                     _nomeDoMetodo = "BtnCadastrar_Click";
-                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                     return;
                 }
             }
@@ -174,10 +166,10 @@ namespace AppFinanceiroEF.Telas
                     GerenciarMensagens.SucessoAoAlterar(aposentadoria.Id);
                     LimparEAtualizarDados();
                 }
-                catch (Exception erro)
+                catch (Exception ex)
                 {
                     _nomeDoMetodo = "BtnAlterar_Click";
-                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                    GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                     return;
                 }
             }
@@ -213,10 +205,10 @@ namespace AppFinanceiroEF.Telas
                         GerenciarMensagens.SucessoAoExcluir(aposentadoria.Id);
                         LimparEAtualizarDados();
                     }
-                    catch (Exception erro)
+                    catch (Exception ex)
                     {
                         _nomeDoMetodo = "BtnExcluir_Click";
-                        GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                        GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                         return;
                     }
                 }
@@ -261,34 +253,6 @@ namespace AppFinanceiroEF.Telas
                         TxtAnoDoIndice.Focus();
                     }
                 }
-            }
-        }
-
-        public void SaldoDaCarteiraPoupancaEInvestimentos()
-        {
-            try
-            {
-                //====================================| Saldo da Carteira |=======================================================================                    
-                TxtCarteira.Text = Convert.ToString(SaldoFinanceiroCPI.SaldoDaCarteira(Convert.ToInt32(CbxAno.Text)));
-                double saldoDaCarteira = Convert.ToDouble(TxtCarteira.Text.ToString().Replace("R$", ""));
-                TxtCarteira.Text = string.Format("{0:c}", saldoDaCarteira);
-                //====================================| Saldo da Poupança |======================================================================= 
-                TxtPoupanca.Text = Convert.ToString(SaldoFinanceiroCPI.SaldoDaPoupanca(Convert.ToInt32(CbxAno.Text)));
-                double saldoDaPoupanca = Convert.ToDouble(TxtPoupanca.Text.ToString().Replace("R$", ""));
-                TxtPoupanca.Text = string.Format("{0:c}", saldoDaPoupanca);
-                //====================================| Saldo de Investimentos |================================================================== 
-                TxtInvestimento.Text = Convert.ToString(SaldoFinanceiroCPI.SaldoDeInvestimento(Convert.ToInt32(CbxAno.Text)));
-                double saldoDeInvestimento = Convert.ToDouble(TxtInvestimento.Text.ToString().Replace("R$", ""));
-                TxtInvestimento.Text = string.Format("{0:c}", saldoDeInvestimento);
-                //=====================================| Saldo Total da Poupança e de Investimentos |=============================================                    
-                double saldoTotalDaPoupancaEInvestimento = Convert.ToDouble(TxtPoupancaEInvestimento.Text.ToString().Replace("R$", ""));
-                TxtPoupancaEInvestimento.Text = string.Format("{0:c}", saldoTotalDaPoupancaEInvestimento = saldoDaPoupanca + saldoDeInvestimento);
-            }
-            catch (Exception erro)
-            {
-                _nomeDoMetodo = "SaldoDaCarteiraPoupancaEInvestimentos";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return;
             }
         }
 

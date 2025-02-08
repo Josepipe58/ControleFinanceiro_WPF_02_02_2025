@@ -29,10 +29,10 @@ namespace AppFinanceiroEF.Telas.Relatorios
                 CbxAno.SelectedValuePath = "Id";
                 CbxAno.SelectedIndex = 0;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarComboBoxAno";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             RelatoriosDeDespesas();
@@ -53,14 +53,11 @@ namespace AppFinanceiroEF.Telas.Relatorios
 
                 //Carregar DataGrid das Despesas Extras.
                 DtgDespExtra.ItemsSource = RelatorioDeDespesas.RelatorioDeDespesasExtras(Convert.ToInt32(CbxAno.Text));
-
-                //Carregar DataGrid das Despesas da Neusa.
-                DtgDespNeusa.ItemsSource = RelatorioDeDespesas.RelatorioDeDespesasDaNeusa(Convert.ToInt32(CbxAno.Text));
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "RelatoriosDeDespesas";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
         }

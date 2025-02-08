@@ -4,10 +4,8 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Despesa_AD : Repositorio<Despesa>
+    public class Despesa_AD(bool Save = true) : Repositorio<Despesa>(Save)
     {
-        public Despesa_AD(bool Save = true) : base(Save) { }
-
         public static List<Despesa> ObterDespesaPorAno(int ano)
         {
             try
@@ -25,13 +23,13 @@ namespace GerenciarDados.AcessarDados
                     Ano = d.Ano,
                 }).Where(d => d.Ano == ano).OrderByDescending(d => d.Id);
 
-                return listaDeDespesas.ToList();
+                return [.. listaDeDespesas];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterDespesaPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<Despesa>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
     }

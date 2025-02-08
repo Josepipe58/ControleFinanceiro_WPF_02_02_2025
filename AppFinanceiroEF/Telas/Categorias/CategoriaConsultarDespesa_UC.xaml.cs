@@ -1,19 +1,17 @@
-﻿using AcessarBancoDados.ContextoDeDados;
-using AcessarBancoDados.Modelos;
+﻿using AcessarBancoDados.Modelos;
 using GerenciarDados.AcessarDados;
 using GerenciarDados.Mensagens;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace AppFinanceiroEF.Telas
+namespace AppFinanceiroEF.Telas.Categorias
 {
-    public partial class Ano_UC : UserControl
+    public partial class CategoriaConsultarDespesa_UC : UserControl
     {
-        private static string _nomeDoMetodo = string.Empty;
-        public Ano_UC()
+        public string _nomeDoMetodo = string.Empty;
+        public CategoriaConsultarDespesa_UC()
         {
             InitializeComponent();
             CarregarDataGrid();
@@ -22,9 +20,9 @@ namespace AppFinanceiroEF.Telas
         private void CarregarDataGrid()
         {
             try
-            {               
-                Ano_AD ano_AD = new();
-                DtgDados.ItemsSource = ano_AD.SelecionarTodos().ToList();
+            {
+                CategoriaConsultarDespesa_AD categoriaConsultarDespesa_AD = new();
+                DtgDados.ItemsSource = categoriaConsultarDespesa_AD.SelecionarTodos();
             }
             catch (Exception ex)
             {
@@ -32,24 +30,23 @@ namespace AppFinanceiroEF.Telas
                 GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
-            TxtAno.Focus();
+            TxtCategoria.Focus();
         }
 
         private void BtnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            if (TxtId.Text == "" && TxtAno.Text != "")
+            if (TxtId.Text == "" && TxtCategoria.Text != "")
             {
                 try
                 {
-                    Ano_AD ano_AD = new();
-                    Ano ano = new()
+                    CategoriaConsultarDespesa_AD categoriaConsultarDespesa_AD = new();
+                    CategoriaConsultarDespesa categoriaConsultarDespesa = new()
                     {
-                        AnoDoCadastro = Convert.ToInt32(TxtAno.Text)
+                        NomeDaCategoria = TxtCategoria.Text
                     };
-                    ano_AD.Cadastrar(ano);
+                    categoriaConsultarDespesa_AD.Cadastrar(categoriaConsultarDespesa);
 
-
-                    GerenciarMensagens.SucessoAoCadastrar(ano.Id);
+                    GerenciarMensagens.SucessoAoCadastrar(categoriaConsultarDespesa.Id);
                     LimparEAtualizarDados();
                 }
                 catch (Exception ex)
@@ -59,35 +56,35 @@ namespace AppFinanceiroEF.Telas
                     return;
                 }
             }
-            else if (TxtId.Text != "" && TxtAno.Text != "")
+            else if (TxtId.Text != "" && TxtCategoria.Text != "")
             {
                 GerenciarMensagens.ErroAoCadastrar();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
             else
             {
                 GerenciarMensagens.PreencherCampoVazio();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
         }
 
         private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
-            if (TxtId.Text != "" && TxtAno.Text != "")
+            if (TxtId.Text != "" && TxtCategoria.Text != "")
             {
                 try
                 {
-                    Ano_AD ano_AD = new();
-                    Ano ano = new()
+                    CategoriaConsultarDespesa_AD categoriaConsultarDespesa_AD = new();
+                    CategoriaConsultarDespesa categoriaConsultarDespesa = new()
                     {
                         Id = Convert.ToInt32(TxtId.Text),
-                        AnoDoCadastro = Convert.ToInt32(TxtAno.Text)
+                        NomeDaCategoria = TxtCategoria.Text
                     };
-                    ano_AD.Alterar(ano);
+                    categoriaConsultarDespesa_AD.Alterar(categoriaConsultarDespesa);
 
-                    GerenciarMensagens.SucessoAoAlterar(ano.Id);
+                    GerenciarMensagens.SucessoAoAlterar(categoriaConsultarDespesa.Id);
                     LimparEAtualizarDados();
                 }
                 catch (Exception ex)
@@ -97,23 +94,23 @@ namespace AppFinanceiroEF.Telas
                     return;
                 }
             }
-            else if (TxtId.Text == "" && TxtAno.Text != "")
+            else if (TxtId.Text == "" && TxtCategoria.Text != "")
             {
                 GerenciarMensagens.ErroAoAlterarOuExcluir();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
             else
             {
                 GerenciarMensagens.PreencherCampoVazio();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
         }
 
         private void BtnExcluir_Click(object sender, RoutedEventArgs e)
         {
-            if (TxtId.Text != "" && TxtAno.Text != "")
+            if (TxtId.Text != "" && TxtCategoria.Text != "")
             {
                 MessageBoxResult resultado = GerenciarMensagens
                     .ConfirmarExcluir(Convert.ToInt32(TxtId.Text));
@@ -121,14 +118,14 @@ namespace AppFinanceiroEF.Telas
                 {
                     try
                     {
-                        Ano_AD ano_AD = new();
-                        Ano ano = new()
+                        CategoriaConsultarDespesa_AD categoriaConsultarDespesa_AD = new();
+                        CategoriaConsultarDespesa categoriaConsultarDespesa = new()
                         {
                             Id = Convert.ToInt32(TxtId.Text)
                         };
-                        ano_AD.Excluir(ano.Id);
+                        categoriaConsultarDespesa_AD.Excluir(categoriaConsultarDespesa.Id);
 
-                        GerenciarMensagens.SucessoAoExcluir(ano.Id);
+                        GerenciarMensagens.SucessoAoExcluir(categoriaConsultarDespesa.Id);
                         LimparEAtualizarDados();
                     }
                     catch (Exception ex)
@@ -144,16 +141,16 @@ namespace AppFinanceiroEF.Telas
                     return;
                 }
             }
-            else if (TxtId.Text == "" && TxtAno.Text != "")
+            else if (TxtId.Text == "" && TxtCategoria.Text != "")
             {
                 GerenciarMensagens.ErroAoAlterarOuExcluir();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
             else
             {
                 GerenciarMensagens.PreencherCampoVazio();
-                TxtAno.Focus();
+                TxtCategoria.Focus();
                 return;
             }
         }
@@ -164,12 +161,12 @@ namespace AppFinanceiroEF.Telas
             {
                 if (DtgDados.SelectedItems.Count >= 0)
                 {
-                    if (DtgDados.SelectedItems[0].GetType() == typeof(Ano))
+                    if (DtgDados.SelectedItems[0].GetType() == typeof(CategoriaConsultarDespesa))
                     {
-                        Ano ano = (Ano)DtgDados.SelectedItems[0];
-                        TxtId.Text = ano.Id.ToString();
-                        TxtAno.Text = ano.AnoDoCadastro.ToString();
-                        TxtAno.Focus();
+                        CategoriaConsultarDespesa categoriaConsultarDespesa = (CategoriaConsultarDespesa)DtgDados.SelectedItems[0];
+                        TxtId.Text = categoriaConsultarDespesa.Id.ToString();
+                        TxtCategoria.Text = categoriaConsultarDespesa.NomeDaCategoria;
+                        TxtCategoria.Focus();
                     }
                 }
             }
@@ -183,7 +180,7 @@ namespace AppFinanceiroEF.Telas
         private void LimparEAtualizarDados()
         {
             TxtId.Text = "";
-            TxtAno.Text = "";
+            TxtCategoria.Text = "";
             CarregarDataGrid();
         }
     }

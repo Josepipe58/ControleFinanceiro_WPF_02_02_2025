@@ -4,9 +4,8 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Poupanca_AD : Repositorio<Poupanca>
+    public class Poupanca_AD(bool Save = true) : Repositorio<Poupanca>(Save)
     {
-        public Poupanca_AD(bool Save = true) : base(Save) { }
         public static List<Poupanca> ObterPoupancaPorAno(int ano)
         {
             try
@@ -24,13 +23,13 @@ namespace GerenciarDados.AcessarDados
                     Ano = p.Ano,
                 }).Where(p => p.Ano == ano).OrderByDescending(p => p.Id);
 
-                return listaDePoupanca.ToList();
+                return [.. listaDePoupanca];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterPoupancaPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<Poupanca>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
     }

@@ -28,7 +28,7 @@ namespace AppFinanceiroEF.Telas.Consultar
                 //ComboBox de Nome de Filtros.
                 FiltrarCategoria_AD filtroDeControle_AD = new();
                 CbxNomeDeFiltros.ItemsSource = filtroDeControle_AD.SelecionarTodos()
-                    .Where(fc => new[] { "Poupança", "Investimentos" }.Contains(fc.NomeDoFiltro));
+                    .Where(fc => new[] { "Poupança", "Investimento" }.Contains(fc.NomeDoFiltro));
                 CbxNomeDeFiltros.DisplayMemberPath = "NomeDoFiltro";
                 CbxNomeDeFiltros.SelectedValuePath = "Id";
                 CbxNomeDeFiltros.SelectedIndex = -1;
@@ -45,10 +45,10 @@ namespace AppFinanceiroEF.Telas.Consultar
                 CbxMes.SelectedIndex = -1;
 
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarComboBoxes";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             ConsultasDeFinancas();
@@ -56,9 +56,7 @@ namespace AppFinanceiroEF.Telas.Consultar
 
         private void CbxNomeDeFiltros_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Categoria_AD categoria_AD = new();
-            CbxCategoria.ItemsSource = categoria_AD
-                .ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
+            CbxCategoria.ItemsSource = Categoria_AD.ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
             CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
             CbxCategoria.SelectedValuePath = "Id";
             CbxCategoria.SelectedIndex = -1;
@@ -67,9 +65,7 @@ namespace AppFinanceiroEF.Telas.Consultar
 
         private void CbxCategoria_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SubCategoria_AD subCategoria_AD = new();
-            CbxSubCategoria.ItemsSource = subCategoria_AD
-                .ObterSubCategoriasPorId(Convert.ToInt32(CbxCategoria.SelectedValue));
+            CbxSubCategoria.ItemsSource = SubCategoria_AD.ObterSubCategoriasPorId(Convert.ToInt32(CbxCategoria.SelectedValue));
             CbxSubCategoria.DisplayMemberPath = "NomeDaSubCategoria";
             CbxSubCategoria.SelectedValuePath = "Id";
             CbxSubCategoria.SelectedIndex = -1;
@@ -81,47 +77,45 @@ namespace AppFinanceiroEF.Telas.Consultar
             {
                 if (CbxCategoria.Text == "" && CbxSubCategoria.Text == "" && CbxMes.Text == "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas();
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas();
 
-                    DtgValores.ItemsSource = RelatorioDePoupanca
-                        .RelatorioDoSaldoTotalDaPoupancaReceitasEInvestimentos(DateTime.Now.Year);
+                    DtgValores.ItemsSource = RelatorioDePoupanca.RelatorioDoSaldoTotalDaPoupancaReceitasEInvestimentos(DateTime.Now.Year);
                     LblTitulo.Content = "Consulta do saldo total da Poupança, Receitas e Investimentos.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text == "" && CbxMes.Text == "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text);
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text);
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoria(CbxCategoria.Text);
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoria(CbxCategoria.Text);
                     _categoria = CbxCategoria.Text;
-                    LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de todos os anos cadastrados, desde o ano de 2020.";
+                    LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de todos os anos cadastrados, a partir do ano de 2025.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text != "" && CbxMes.Text == "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                             .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.NomeDaSubCategoria == CbxSubCategoria.Text);
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text 
+                    && cf.NomeDaSubCategoria == CbxSubCategoria.Text);
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaESubCategoria(CbxCategoria.Text, CbxSubCategoria.Text);
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaESubCategoria(CbxCategoria.Text, CbxSubCategoria.Text);
                     _categoria = CbxCategoria.Text;
                     _subCategoria = CbxSubCategoria.Text;
-                    LblTitulo.Content = $"Tipo de Consulta: {_categoria} - {_subCategoria}, consulta de todos os anos cadastrados, desde o ano de 2020.";
+                    LblTitulo.Content = $"Tipo de Consulta: {_categoria} - {_subCategoria}, consulta de todos os anos cadastrados, a partir do ano de 2025.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text != "" && CbxMes.Text != "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.NomeDaSubCategoria == CbxSubCategoria.Text && dp.Mes == CbxMes.Text);
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text 
+                    && cf.NomeDaSubCategoria == CbxSubCategoria.Text && cf.Mes == CbxMes.Text);
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaSubCategoriaEMes(CbxCategoria.Text, CbxSubCategoria.Text, CbxMes.Text);
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaSubCategoriaEMes(CbxCategoria.Text, CbxSubCategoria.Text, CbxMes.Text);
                     _categoria = CbxCategoria.Text;
                     _subCategoria = CbxSubCategoria.Text;
-                    LblTitulo.Content = $"Tipo de Consulta: {_categoria} - {_subCategoria}, consulta de acordo com o mês selecionado, desde o ano de 2020.";
+                    LblTitulo.Content = $"Tipo de Consulta: {_categoria} - {_subCategoria}, consulta de acordo com o mês selecionado, a partir do ano de 2025.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text != "" && CbxMes.Text == "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas().Where(dp => dp.NomeDaCategoria == CbxCategoria.Text
-                    && dp.NomeDaSubCategoria == CbxSubCategoria.Text && dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text
+                    && cf.NomeDaSubCategoria == CbxSubCategoria.Text && cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaSubCategoriaEAno(CbxCategoria.Text, CbxSubCategoria.Text,
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaSubCategoriaEAno(CbxCategoria.Text, CbxSubCategoria.Text,
                         Convert.ToInt32(CbxAno.Text));
                     _categoria = CbxCategoria.Text;
                     _subCategoria = CbxSubCategoria.Text;
@@ -129,20 +123,19 @@ namespace AppFinanceiroEF.Telas.Consultar
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text == "" && CbxMes.Text == "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text 
+                    && cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaEAno(CbxCategoria.Text, Convert.ToInt32(CbxAno.Text));
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaEAno(CbxCategoria.Text, Convert.ToInt32(CbxAno.Text));
                     _categoria = CbxCategoria.Text;
                     LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de acordo com o ano selecionado.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text != "" && CbxMes.Text != "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.NomeDaSubCategoria == CbxSubCategoria.Text &&
-                            dp.Mes == CbxMes.Text && dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text 
+                    && cf.NomeDaSubCategoria == CbxSubCategoria.Text && cf.Mes == CbxMes.Text && cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaSubCategoriaMesEAno(CbxCategoria.Text, CbxSubCategoria.Text,
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaSubCategoriaMesEAno(CbxCategoria.Text, CbxSubCategoria.Text,
                         CbxMes.Text, Convert.ToInt32(CbxAno.Text));
                     _categoria = CbxCategoria.Text;
                     _subCategoria = CbxSubCategoria.Text;
@@ -150,44 +143,40 @@ namespace AppFinanceiroEF.Telas.Consultar
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text == "" && CbxMes.Text != "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.Mes == CbxMes.Text && dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text 
+                    && cf.Mes == CbxMes.Text && cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaMesEAno(CbxCategoria.Text, CbxMes.Text, Convert.ToInt32(CbxAno.Text));
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaMesEAno(CbxCategoria.Text, CbxMes.Text, Convert.ToInt32(CbxAno.Text));
                     _categoria = CbxCategoria.Text;
                     LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de acordo com o mês e o ano selecionado.";
                 }
                 else if (CbxCategoria.Text != "" && CbxSubCategoria.Text == "" && CbxMes.Text != "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.NomeDaCategoria == CbxCategoria.Text && dp.Mes == CbxMes.Text);
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.NomeDaCategoria == CbxCategoria.Text && cf.Mes == CbxMes.Text);
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorCategoriaEMes(CbxCategoria.Text, CbxMes.Text);
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorCategoriaEMes(CbxCategoria.Text, CbxMes.Text);
                     _categoria = CbxCategoria.Text;
-                    LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de acordo com o mês selecionado, desde o ano de 2020.";
+                    LblTitulo.Content = $"Tipo de Consulta: {_categoria}, consulta de acordo com o mês selecionado, a partir do ano de 2025.";
                 }
                 else if (CbxCategoria.Text == "" && CbxSubCategoria.Text == "" && CbxMes.Text != "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.Mes == CbxMes.Text && dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.Mes == CbxMes.Text && cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorMesEAno(CbxMes.Text, Convert.ToInt32(CbxAno.Text));
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorMesEAno(CbxMes.Text, Convert.ToInt32(CbxAno.Text));
                     LblTitulo.Content = "Consulta geral de Finanças, de acordo com o mês e o ano selecionado.";
                 }
                 else if (CbxCategoria.Text == "" && CbxSubCategoria.Text == "" && CbxMes.Text != "" && CbxAno.Text == "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.Mes == CbxMes.Text);
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.Mes == CbxMes.Text);
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorMes(CbxMes.Text);
-                    LblTitulo.Content = "Consulta geral de Finanças, de acordo com o mês selecionado, desde o ano de 2020.";
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorMes(CbxMes.Text);
+                    LblTitulo.Content = "Consulta geral de Finanças, de acordo com o mês selecionado, a partir do ano de 2025.";
                 }
                 else if (CbxCategoria.Text == "" && CbxSubCategoria.Text == "" && CbxMes.Text == "" && CbxAno.Text != "")
                 {
-                    DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas()
-                            .Where(dp => dp.Ano == Convert.ToInt32(CbxAno.Text));
+                    DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas().Where(cf => cf.Ano == Convert.ToInt32(CbxAno.Text));
 
-                    DtgValores.ItemsSource = ConsultarDespesas.ConsultarPorAno(Convert.ToInt32(CbxAno.Text));
+                    DtgValores.ItemsSource = ConsultarFinancas.ConsultarPorAno(Convert.ToInt32(CbxAno.Text));
                     LblTitulo.Content = "Consulta geral de Finanças, de acordo com o ano selecionado.";
                 }
                 else
@@ -197,10 +186,10 @@ namespace AppFinanceiroEF.Telas.Consultar
                     return;
                 }
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ConsultasDeFinancas";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
         }
@@ -210,14 +199,14 @@ namespace AppFinanceiroEF.Telas.Consultar
             var textBox = sender as TextBox;
             if (textBox.Text != "")
             {
-                var listafiltrada = ConsultarDespesas.ObterListaDeDespesas()
-                    .Where(sc => sc.NomeDaSubCategoria.ToLower().Contains(textBox.Text.ToLower()));
+                var listafiltrada = ConsultarFinancas.ObterListaDeFinancas()
+                    .Where(cf => cf.NomeDaSubCategoria.ToLower().Contains(textBox.Text.ToLower()));
                 DtgDados.ItemsSource = null;
                 DtgDados.ItemsSource = listafiltrada;
             }
             else
             {
-                DtgDados.ItemsSource = ConsultarDespesas.ObterListaDeDespesas();
+                DtgDados.ItemsSource = ConsultarFinancas.ObterListaDeFinancas();
             }
         }
 

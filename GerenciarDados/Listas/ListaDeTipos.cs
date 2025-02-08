@@ -2,15 +2,6 @@
 {
     public class ListaDeTipos
     {
-        public static List<string> ListaDeTiposDeDespesa()
-        {
-            var listaDetipos = new List<string>()
-            {
-                "Despesa",
-            };
-            return listaDetipos;
-        }
-
         public static List<string> ListaDeTiposDePoupanca()
         {
             var listaDetipos = new List<string>()

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AcessarBancoDados.Modelos
 {
-    public class SubCategoria
+    public class SubCategoriaConsultarDespesa
     {
         [Key]
         public int Id { get; set; }
@@ -11,16 +11,12 @@ namespace AcessarBancoDados.Modelos
         [Required, StringLength(100)]
         public string NomeDaSubCategoria { get; set; }
 
-        [ForeignKey(nameof(CategoriaId))]
-        public int CategoriaId { get; set; }
+        [ForeignKey(nameof(CategoriaConsultarDespesaId))]
+        public int CategoriaConsultarDespesaId { get; set; }
 
         [NotMapped]
         public string NomeDaCategoria { get; set; }
 
-        [NotMapped]
-        public int FiltrarCategoriaId { get; set; }
-
-        [NotMapped]
-        public string NomeDoFiltro { get; set; }
+        public virtual CategoriaConsultarDespesa CategoriaConsultarDespesa { get; set; }
     }
 }

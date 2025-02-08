@@ -63,11 +63,11 @@ namespace GerenciarDados.AcessarDados
             {
                 return _contexto.Set<T>().ToList();
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "SelecionarTodos";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<T>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
 
@@ -77,10 +77,10 @@ namespace GerenciarDados.AcessarDados
             {
                 return _contexto.Set<T>().Find(variavel);
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "SelecionarPK";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return null;
             }
         }

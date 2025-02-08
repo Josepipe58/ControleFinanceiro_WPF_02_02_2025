@@ -54,7 +54,7 @@
                    Height="45" Width="1480" Margin="0,250,0,0" Padding="500,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                    BorderBrush="#FF09320F" BorderThickness="0,10,0,0"/>
 
-            <Label Content="TOTAL DE RENDIMENTOS ENTRE DEPÓSITOS, JUROS E SAQUES" FontSize="24" FontWeight="Bold" Foreground="#FF0E0E61" 
+            <Label Content="TOTAL DE JUROS DA POUPANÇA E INVESTIMENTOS" FontSize="24" FontWeight="Bold" Foreground="#FF0E0E61" 
                    Background="#FF0DDEDE" Height="45" Width="1480" Margin="0,375,0,0" Padding="350,0,0,0" 
                    VerticalAlignment="Top" BorderBrush="#FF09320F" BorderThickness="0,10,0,0" HorizontalAlignment="Left"/>
 
@@ -125,7 +125,7 @@
             </DataGrid>
 
             <!--|==============================| Relatório do Total de Rendimentos Entre Depósitos, Juros e Saques |===============================|-->
-            <DataGrid x:Name="DtgDeRendimentosEntreDepositosJurosESaques" Height="85" Width="1480" 
+            <DataGrid x:Name="DtgJurosPoupancaInvestimento" Height="85" Width="1480" 
                       Style="{DynamicResource DtgDeValoresCorVerde}" Margin="0,420,0,0" 
                       ColumnHeaderStyle="{DynamicResource DtgCabecalhoVerdeEscuro}" HorizontalAlignment="Left">
                 <DataGrid.Columns>

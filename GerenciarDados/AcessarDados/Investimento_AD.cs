@@ -4,9 +4,8 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Investimento_AD : Repositorio<Investimento>
+    public class Investimento_AD(bool Save = true) : Repositorio<Investimento>(Save)
     {
-        public Investimento_AD(bool Save = true) : base(Save) { }
         public static List<Investimento> ObterInvestimentoPorAno(int ano)
         {
             try
@@ -24,13 +23,13 @@ namespace GerenciarDados.AcessarDados
                     Ano = i.Ano,
                 }).Where(i => i.Ano == ano).OrderByDescending(i => i.Id);
 
-                return listaDeInvestimentos.ToList();
+                return [.. listaDeInvestimentos];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterInvestimentoPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<Investimento>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
     }

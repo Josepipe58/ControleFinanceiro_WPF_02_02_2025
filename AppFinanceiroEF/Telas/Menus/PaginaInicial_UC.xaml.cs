@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace AppFinanceiroEF.Telas
+namespace AppFinanceiroEF.Telas.Menus
 {
     public partial class PaginaInicial_UC : UserControl
     {       

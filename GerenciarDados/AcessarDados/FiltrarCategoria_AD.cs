@@ -2,8 +2,7 @@
 
 namespace GerenciarDados.AcessarDados
 {
-    public class FiltrarCategoria_AD : Repositorio<FiltrarCategoria>
+    public class FiltrarCategoria_AD(bool Save = true) : Repositorio<FiltrarCategoria>(Save)
     {
-        public FiltrarCategoria_AD(bool Save = true) : base(Save) { }
     }
 }

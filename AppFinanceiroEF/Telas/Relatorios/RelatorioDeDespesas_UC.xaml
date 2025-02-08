@@ -54,13 +54,9 @@
                    Height="45" Width="1430" Margin="0,250,0,0" Padding="500,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
                    BorderThickness="0 10 0 0" BorderBrush="#FF09320F"/>
 
-            <Label Content="DESPESAS DA NEUSA" FontSize="24" FontWeight="Bold" Foreground="#FF0E0E61" Background="#FF11E4E4" 
-                   Height="45" Width="1430" Margin="0,375,0,0" Padding="500,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-                   BorderThickness="0 10 0 0" BorderBrush="#FF09320F"/>
-
-            <Label Content="CARIDADE" FontSize="24" FontWeight="Bold" Foreground="#FF0E0E61" Background="#FF11E4E4" Height="45" 
-                   Width="1430" Margin="0,500,0,0" Padding="550,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"
-                   BorderThickness="0 10 0 0" BorderBrush="#FF09320F"/>
+            <Label Content="CARIDADE" FontSize="24" FontWeight="Bold" Foreground="#FF0E0E61" Background="#FF11E4E4" 
+                   Height="45" Width="1430" Margin="0,380,0,0" Padding="550,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   BorderThickness="0 5 0 0" BorderBrush="#FF09320F"/>
 
             <!--|===================================| Relatório de Despesa Geral |=================================================================|-->
             <DataGrid x:Name="DtgDespGeral" Height="85" Width="1430" Style="{DynamicResource DtgDeValoresCorVerde}" Margin="0,45,0,0" 
@@ -122,28 +118,8 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <!--|===================================| Relatório de Despesas da Neusa |=============================================================|-->
-            <DataGrid x:Name="DtgDespNeusa" Height="85" Width="1430" Style="{DynamicResource DtgDeValoresCorVerde}" Margin="0,420,0,0" 
-                      ColumnHeaderStyle="{DynamicResource DtgCabecalhoVerdeEscuro}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Janeiro" Binding="{Binding Janeiro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Fevereiro" Binding="{Binding Fevereiro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Março" Binding="{Binding Marco, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Abril" Binding="{Binding Abril, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Maio" Binding="{Binding Maio, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Junho" Binding="{Binding Junho, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Julho" Binding="{Binding Julho, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Agôsto" Binding="{Binding Agosto, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Setembro" Binding="{Binding Setembro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Outubro" Binding="{Binding Outubro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Novembro" Binding="{Binding Novembro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Dezembro" Binding="{Binding Dezembro, StringFormat=R$ \{0:N2\}}" Width="105"/>
-                    <DataGridTextColumn Header="Total Ano" Binding="{Binding TotalAno, StringFormat=R$ \{0:N2\}}" Width="150"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
             <!--|===================================| Relatório de Despesas de Caridade |==========================================================|-->
-            <DataGrid x:Name="DtgDespCaridade" Height="85" Width="1430" Style="{DynamicResource DtgDeValoresCorVerde}" Margin="0,545,0,0"
+            <DataGrid x:Name="DtgDespCaridade" Height="122" Width="1430" Style="{DynamicResource DtgDeValoresCorVerde}" Margin="0,420,0,0"
                       ColumnHeaderStyle="{DynamicResource DtgCabecalhoVerdeEscuro}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Janeiro" Binding="{Binding Janeiro, StringFormat=R$ \{0:N2\}}" Width="105"/>

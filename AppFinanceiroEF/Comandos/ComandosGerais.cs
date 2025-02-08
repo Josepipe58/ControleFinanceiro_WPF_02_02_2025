@@ -1,6 +1,10 @@
 ﻿using AppFinanceiroEF.Telas;
+using AppFinanceiroEF.Telas.Categorias;
 using AppFinanceiroEF.Telas.Consultar;
+using AppFinanceiroEF.Telas.Menus;
 using AppFinanceiroEF.Telas.Relatorios;
+using AppFinanceiroEF.Telas.SubCategorias;
+using AppFinanceiroEF.Telas.SubCategprias;
 using System.Windows.Input;
 
 namespace AppFinanceiroEF.Comandos
@@ -19,7 +23,7 @@ namespace AppFinanceiroEF.Comandos
             }
         }
 
-        #region | Comandos de Voltar Para o Menu De Consultas e Relatorios |
+        #region | Comandos de Voltar Para o Menu De Consultas e Relatórios |
 
         private void VoltarParaMenuDeConsultasERelatorios()
         {
@@ -99,27 +103,44 @@ namespace AppFinanceiroEF.Comandos
             }
         }
 
-        //public void CategoriasESubCategoriasComando()
-        //{
-        //    SelecionarControleDeUsuario = new CategoriasESubCategorias_UC();
-        //}
+        public void ConsultarCategoriasDeDespesasComando()
+        {
+            SelecionarControleDeUsuario = new CategoriaConsultarDespesa_UC();
+        }
 
-        //private ICommand _comandoDeCategoriasESubCategorias;
-        //public ICommand ComandoDeCategoriasESubCategorias
-        //{
-        //    get
-        //    {
-        //        if (_comandoDeCategoriasESubCategorias == null)
-        //        {
-        //            _comandoDeCategoriasESubCategorias = new RelayCommand(param => CategoriasESubCategoriasComando());
-        //        }
-        //        return _comandoDeCategoriasESubCategorias;
-        //    }
-        //}
+        private ICommand _comandoDeConsultarCategoriasDeDespesas;
+        public ICommand ComandoDeConsultarCategoriasDeDespesas
+        {
+            get
+            {
+                if (_comandoDeConsultarCategoriasDeDespesas == null)
+                {
+                    _comandoDeConsultarCategoriasDeDespesas = new RelayCommand(param => ConsultarCategoriasDeDespesasComando());
+                }
+                return _comandoDeConsultarCategoriasDeDespesas;
+            }
+        }
 
+        public void ConsultarSubCategoriasDeDespesasComando()
+        {
+            SelecionarControleDeUsuario = new SubCategoriaConsultarDespesa_UC();
+        }
+
+        private ICommand _comandoDeConsultarSubCategoriasDeDespesas;
+        public ICommand ComandoDeConsultarSubCategoriasDeDespesas
+        {
+            get
+            {
+                if (_comandoDeConsultarSubCategoriasDeDespesas == null)
+                {
+                    _comandoDeConsultarSubCategoriasDeDespesas = new RelayCommand(param => ConsultarSubCategoriasDeDespesasComando());
+                }
+                return _comandoDeConsultarSubCategoriasDeDespesas;
+            }
+        }
         #endregion
 
-        #region | Relatórios de Despesas, Poupanças, Receitas e Investimentos |
+        #region | Relatórios de Despesas, Poupanças, Investimentos e Receitas |
 
         public void RelatorioDeDespesas()
         {
@@ -157,24 +178,6 @@ namespace AppFinanceiroEF.Comandos
             }
         }
 
-        public void RelatorioDeReceitas()
-        {
-            SelecionarControleDeUsuario = new RelatorioDeReceitas_UC();
-        }
-
-        private ICommand _comandoDoRelatorioDeReceitas;
-        public ICommand ComandoDoRelatorioDeReceitas
-        {
-            get
-            {
-                if (_comandoDoRelatorioDeReceitas == null)
-                {
-                    _comandoDoRelatorioDeReceitas = new RelayCommand(param => RelatorioDeReceitas());
-                }
-                return _comandoDoRelatorioDeReceitas;
-            }
-        }
-
         public void RelatorioDeInvestimentos()
         {
             SelecionarControleDeUsuario = new RelatorioDeInvestimentos_UC();
@@ -193,9 +196,26 @@ namespace AppFinanceiroEF.Comandos
             }
         }
 
+        public void RelatorioDeReceitas()
+        {
+            SelecionarControleDeUsuario = new RelatorioDeReceitas_UC();
+        }
+
+        private ICommand _comandoDoRelatorioDeReceitas;
+        public ICommand ComandoDoRelatorioDeReceitas
+        {
+            get
+            {
+                if (_comandoDoRelatorioDeReceitas == null)
+                {
+                    _comandoDoRelatorioDeReceitas = new RelayCommand(param => RelatorioDeReceitas());
+                }
+                return _comandoDoRelatorioDeReceitas;
+            }
+        }
         #endregion
 
-        #region | Consultas de Despesas, Finanças, Receitas e Aposentadoria |
+        #region | Consultas de Despesas e Finanças |
 
         public void ConsultarDespesas()
         {
@@ -233,6 +253,5 @@ namespace AppFinanceiroEF.Comandos
             }
         }
         #endregion
-
     }
 }

@@ -28,10 +28,10 @@ namespace AppFinanceiroEF.Telas.Relatorios
                 CbxAno.SelectedValuePath = "Id";
                 CbxAno.SelectedIndex = 0;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarComboBoxAno";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             RelatoriosDeInvestimentos();
@@ -53,14 +53,14 @@ namespace AppFinanceiroEF.Telas.Relatorios
                 DtgJurosDeInvestimentos.ItemsSource = RelatorioDeInvestimentos
                     .RelatorioDosJurosDeInvestimentos(Convert.ToInt32(CbxAno.Text));
 
-                //Total de Rendimentos Entre Depósitos, Juros e Saques.
-                DtgDeRendimentosEntreDepositosJurosESaques.ItemsSource = RelatorioDeInvestimentos
-                    .RelatorioDosRendimentosDeInvestimentosEntreDepositosJurosESaques(Convert.ToInt32(CbxAno.Text));
+                //Juros da Poupanca e Investimentos.
+                DtgJurosPoupancaInvestimento.ItemsSource = RelatorioDeInvestimentos
+                    .RelatorioDeJurosDaPoupancaEInvestimentos(Convert.ToInt32(CbxAno.Text));
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "RelatoriosDeInvestimentos";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
         }

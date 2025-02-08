@@ -29,10 +29,10 @@ namespace AppFinanceiroEF.Telas.Relatorios
                 CbxAno.SelectedValuePath = "Id";
                 CbxAno.SelectedIndex = 0;
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "CarregarComboBoxAno";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
             RelatoriosDeReceitas();
@@ -62,10 +62,10 @@ namespace AppFinanceiroEF.Telas.Relatorios
                 DtgSaldoCarteira.ItemsSource = RelatorioDeReceitas
                     .RelatorioDoSaldoDaCarteiraPorMesEAno(Convert.ToInt32(CbxAno.Text));
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "RelatoriosDeReceitas";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
         }

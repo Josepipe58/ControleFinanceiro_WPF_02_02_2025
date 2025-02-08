@@ -4,11 +4,9 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class SubCategoria_AD : Repositorio<SubCategoria>
+    public class SubCategoria_AD(bool Save = true) : Repositorio<SubCategoria>(Save)
     {
-        public SubCategoria_AD(bool Save = true) : base(Save) { }
-
-        public List<SubCategoria> ObterSubCategoriasPorId(int id)
+        public static List<SubCategoria> ObterSubCategoriasPorId(int id)
         {
             try
             {
@@ -28,14 +26,14 @@ namespace GerenciarDados.AcessarDados
                     }).Where(sc => sc.CategoriaId == id)
                     .OrderBy(sc => sc.NomeDaSubCategoria).ToList();
 
-                return listaDeSubCategorias.ToList();
+                return [.. listaDeSubCategorias];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterSubCategoriasPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
 
-                return new List<SubCategoria>();
+                return [];
             }
         }
 
@@ -61,14 +59,14 @@ namespace GerenciarDados.AcessarDados
                         NomeDoFiltro = cf.f.NomeDoFiltro
                     }).OrderByDescending(sc => sc.Id);
 
-                return listaDeSubCategorias.ToList();
+                return [.. listaDeSubCategorias];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterSubCategorias";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
 
-                return new List<SubCategoria>();
+                return [];
             }
         }
     }

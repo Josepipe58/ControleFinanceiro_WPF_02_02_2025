@@ -7,32 +7,30 @@ namespace GerenciarDados.Consultas
     {
         // CPI = Carteira, Poupança e Investimento.
         private static string _nomeDoMetodo = string.Empty;
+        private static readonly string[] saldoJurosEDepositos = ["Saldo Anterior", "Juros de Investimentos", "Depósito"];
+        private static readonly string[] despesaDebito = ["Despesa", "Débito"];
 
         public static double SaldoDaCarteira(int ano)
         {
             try
             {
-                //new[] { "Saldo da Carteira", "Renda" }.Contains(r.NomeDaCategoria)
                 using var contexto = new Contexto();
                 var saldoDaCarteira =
-                    contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Saldo da Carteira").Select(r => r.Valor).Sum() +
+                    (contexto.TReceita.Where(r => r.Ano == ano && r.NomeDaCategoria == "Saldo da Carteira").Select(r => r.Valor).Sum() +
                     contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum() +
                     contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Saque").Select(p => p.Valor).Sum() +
-                    contexto.TInvestimento.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Saque").Select(p => p.Valor).Sum() -
-
-                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Despesa").Select(d => d.Valor).Sum() +
-                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(d => d.Valor).Sum() +
+                    contexto.TInvestimento.Where(i => i.Ano == ano && i.NomeDaSubCategoria == "Saque").Select(i => i.Valor).Sum()) -
+                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(d => d.Valor).Sum() +
                     contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa").Select(d => d.Valor).Sum() +
-                    contexto.TInvestimento.Where(i => i.Ano == ano && new[] { "Depósito", "Depósito Inicial" }
-                    .Contains(i.NomeDaSubCategoria)).Select(i => i.Valor).Sum() +                   
-                    contexto.TPoupanca.Where(cd => cd.Ano == ano && cd.NomeDaCategoria == "Renda").Select(cd => cd.Valor).Sum());
+                    contexto.TInvestimento.Where(i => i.Ano == ano && i.NomeDaSubCategoria == "Depósito").Select(i => i.Valor).Sum() +                   
+                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum());
 
                 return Convert.ToDouble(saldoDaCarteira);
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "SaldoDaCarteira";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return 0;
             }
         }
@@ -42,21 +40,17 @@ namespace GerenciarDados.Consultas
             {
                 using var contexto = new Contexto();
                 var saldoDaPoupanca =
-                    contexto.TPoupanca.Where(cd => cd.Ano == ano && cd.Tipo == "Saldo Anterior")
-                    .Select(cd => cd.Valor).Sum() +
-                    contexto.TPoupanca.Where(cd => cd.Ano == ano && new[] { "Renda", "Venda" }
-                    .Contains(cd.NomeDaCategoria)).Select(cd => cd.Valor).Sum() +
-                    contexto.TPoupanca.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Depósito")
-                    .Select(cd => cd.Valor).Sum() -
-                    contexto.TPoupanca.Where(cd => cd.Ano == ano && new[] { "Despesa", "Débito" }
-                    .Contains(cd.Tipo)).Select(cd => cd.Valor).Sum();
+                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Saldo Anterior").Select(p => p.Valor).Sum() +
+                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum() +
+                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(p => p.Valor).Sum()) -
+                    contexto.TPoupanca.Where(p => p.Ano == ano && despesaDebito.Contains(p.Tipo)).Select(p => p.Valor).Sum();
 
                 return Convert.ToDouble(saldoDaPoupanca);
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "SaldoDaPoupanca";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return 0;
             }
         }
@@ -66,19 +60,16 @@ namespace GerenciarDados.Consultas
             try
             {
                 using var contexto = new Contexto();
-                var saldoDaPoupanca =
-                    contexto.TInvestimento.Where(cd => cd.Ano == ano && new[] { "Depósito Inicial",
-                        "Saldo Anterior", "Juros de Investimentos", "Depósito"}.Contains(cd.NomeDaSubCategoria))
-                    .Select(cd => cd.Valor).Sum() -
-                    contexto.TInvestimento.Where(cd => cd.Ano == ano && cd.NomeDaSubCategoria == "Saque")
-                    .Select(cd => cd.Valor).Sum();
+                var saldoDeInvestimento =
+                    contexto.TInvestimento.Where(i => i.Ano == ano && saldoJurosEDepositos.Contains(i.NomeDaSubCategoria)).Select(i => i.Valor).Sum() -
+                    contexto.TInvestimento.Where(i => i.Ano == ano && i.NomeDaSubCategoria == "Saque").Select(i => i.Valor).Sum();
 
-                return Convert.ToDouble(saldoDaPoupanca);
+                return Convert.ToDouble(saldoDeInvestimento);
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "SaldoDeInvestimento";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return 0;
             }
         }

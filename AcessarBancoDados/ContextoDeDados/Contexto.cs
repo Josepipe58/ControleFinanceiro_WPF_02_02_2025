@@ -19,6 +19,8 @@ namespace AcessarBancoDados.ContextoDeDados
         public virtual DbSet<Receita> TReceita { get; set; }
         public virtual DbSet<Investimento> TInvestimento { get; set; }
         public virtual DbSet<Aposentadoria> TAposentadoria { get; set; }
+        public virtual DbSet<CategoriaConsultarDespesa> TCategoriaConsultarDespesa { get; set; }
+        public virtual DbSet<SubCategoriaConsultarDespesa> TSubCategoriaConsultarDespesa { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,9 +29,9 @@ namespace AcessarBancoDados.ContextoDeDados
                 optionsBuilder.UseSqlServer(" Data Source = JOSEPIPE-PC\\FINANCEIRO; Initial Catalog = Financeiro_2025_2040; " +
                     "Integrated Security = True; TrustServerCertificate=True");
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
-                MessageBox.Show(erro.Message);
+                MessageBox.Show(ex.Message);
                 return;
             }
         }

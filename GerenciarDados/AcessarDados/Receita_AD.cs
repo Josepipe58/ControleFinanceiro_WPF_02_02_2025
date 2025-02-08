@@ -4,9 +4,8 @@ using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
 {
-    public class Receita_AD : Repositorio<Receita>
+    public class Receita_AD(bool Save = true) : Repositorio<Receita>(Save)
     {
-        public Receita_AD(bool Save = true) : base(Save) { }
         public static List<Receita> ObterReceitaPorAno(int ano)
         {
             try
@@ -24,13 +23,13 @@ namespace GerenciarDados.AcessarDados
                     Ano = d.Ano,
                 }).Where(d => d.Ano == ano).OrderByDescending(d => d.Id);
 
-                return listaDeReceitas.ToList();
+                return [.. listaDeReceitas];
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "ObterReceitaPorId";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
-                return new List<Receita>();
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
+                return [];
             }
         }
     }

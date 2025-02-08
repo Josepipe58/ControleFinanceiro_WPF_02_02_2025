@@ -197,10 +197,10 @@
                 <ControlTemplate TargetType="RadioButton">
                     <Grid Margin="0,0,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="290"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="120"/>
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <Border x:Name="border" Background="#FF093EE2" CornerRadius="6"/>

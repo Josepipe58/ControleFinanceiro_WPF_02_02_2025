@@ -61,7 +61,7 @@
     <Compile Update="Telas\Aposentadoria_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Telas\Categoria_UC.xaml.cs">
+    <Compile Update="Telas\Categorias\Categoria_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\Consultar\ConsultarDespesas_UC.xaml.cs">
@@ -70,13 +70,13 @@
     <Compile Update="Telas\Consultar\ConsultarFinancas_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Telas\MenuIniciar\TelaPrincipal.xaml.cs">
+    <Compile Update="Telas\Menus\MenuIniciar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Telas\PaginaInicial_UC.xaml.cs">
+    <Compile Update="Telas\Menus\PaginaInicial_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Telas\RelatoriosEConsultas_UC.xaml.cs">
+    <Compile Update="Telas\Menus\RelatoriosEConsultas_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Telas\Relatorios\RelatorioDeDespesas_UC.xaml.cs">
@@ -91,7 +91,7 @@
     <Compile Update="Telas\Relatorios\RelatorioDeReceitas_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Telas\SubCategoria_UC.xaml.cs">
+    <Compile Update="Telas\SubCategorias\SubCategoria_UC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

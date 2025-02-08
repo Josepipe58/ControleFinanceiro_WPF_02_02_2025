@@ -1,4 +1,5 @@
 ﻿using AppFinanceiroEF.Telas;
+using AppFinanceiroEF.Telas.Menus;
 using GerenciarDados.Listas;
 using GerenciarDados.Mensagens;
 using System;
@@ -14,14 +15,13 @@ namespace AppFinanceiroEF.Comandos
     public partial class ComandosDaTelaPrincipal : RelayCommand
     {
         private static string _nomeDoMetodo = string.Empty;
-
         private CollectionViewSource MenuItemsCollection { get; set; }
         public ICollectionView SourceCollection => MenuItemsCollection.View;
 
         public ComandosDaTelaPrincipal()
         {
-            ObservableCollection<ListaDeItemsDoMenu> menuItems = new()
-            {
+            ObservableCollection<ListaDeItemsDoMenu> menuItems =
+            [
                 new ListaDeItemsDoMenu{ MenuName = "Página Inicial" },
                 new ListaDeItemsDoMenu{ MenuName = "Despesas" },
                 new ListaDeItemsDoMenu{ MenuName = "Poupança" },
@@ -31,7 +31,7 @@ namespace AppFinanceiroEF.Comandos
                 new ListaDeItemsDoMenu{ MenuName = "Anos" },
                 new ListaDeItemsDoMenu{ MenuName = "Aposentadoria" },
                 new ListaDeItemsDoMenu{ MenuName = "Relatórios e Consultas" },
-            };
+            ];
 
             MenuItemsCollection = new CollectionViewSource { Source = menuItems };
 
@@ -85,13 +85,12 @@ namespace AppFinanceiroEF.Comandos
                     _ => new PaginaInicial_UC()
                 };
             }
-            catch (Exception erro)
+            catch (Exception ex)
             {
                 _nomeDoMetodo = "MenuDoMenuInicial";
-                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(erro, _nomeDoMetodo);
+                GerenciarMensagens.ErroDeExcecaoENomeDoMetodo(ex, _nomeDoMetodo);
                 return;
             }
-
         }
 
         public static void AbrirBancoDeDados()
