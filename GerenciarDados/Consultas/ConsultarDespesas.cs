@@ -41,7 +41,7 @@ namespace GerenciarDados.Consultas
                         };
                         listaDeDespesa.Add(despesa);
                     }
-                    return [.. listaDeDespesa];
+                    return [.. listaDeDespesa.OrderByDescending(d=>d.Id).ToList()];
                 }
             }
             catch (Exception ex)

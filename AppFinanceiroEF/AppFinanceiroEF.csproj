@@ -5,7 +5,7 @@
     <TargetFramework>net9.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Imagens\Financeiro_2022.ico</ApplicationIcon>
+    <ApplicationIcon>Imagens\Financeiro_2025.ico</ApplicationIcon>
     <StartupObject>AppFinanceiroEF.App</StartupObject>
     <SignAssembly>False</SignAssembly>
   </PropertyGroup>
@@ -25,7 +25,6 @@
     <None Remove="Imagens\close_mo_icon.png" />
     <None Remove="Imagens\controle_financeiro_azulclaro.png" />
     <None Remove="Imagens\Financeiro_2020.ico" />
-    <None Remove="Imagens\Financeiro_2022.ico" />
     <None Remove="Imagens\max_def.png" />
     <None Remove="Imagens\max_mo.png" />
     <None Remove="Imagens\stock_icon.png" />
@@ -33,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Imagens\Financeiro_2022.ico" />
+    <Content Include="Imagens\Financeiro_2025.ico" />
   </ItemGroup>
 
   <ItemGroup>

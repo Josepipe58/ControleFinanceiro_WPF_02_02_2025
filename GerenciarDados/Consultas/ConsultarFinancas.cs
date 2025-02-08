@@ -40,7 +40,7 @@ namespace GerenciarDados.Consultas
                         };
                         listaDePoupanca.Add(poupanca);
                     }
-                    return [.. listaDePoupanca];
+                    return [.. listaDePoupanca.OrderByDescending(p => p.Id).ToList()];
                 }
             }
             catch (Exception ex)
