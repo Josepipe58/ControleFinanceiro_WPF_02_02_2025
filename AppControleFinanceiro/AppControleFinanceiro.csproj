@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Imagens\$Cifrao.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Imagens\Universo01.jpg" />
+    <None Remove="Imagens\Voltar.png" />
+    <None Remove="Recursos\ControleFinanceiroAzulClaro.png" />
+    <None Remove="Recursos\controle_financeiro_azulclaro.png" />
+    <None Remove="Recursos\PastaTurquesa.png" />
+    <None Remove="Recursos\stock_icon.png" />
+    <None Remove="Recursos\Voltar.png" />
+    <None Remove="Telas\Universo01.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Imagens\$Cifrao.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcessarDadosDoBanco\AcessarDadosDoBanco.csproj" />
+    <ProjectReference Include="..\GerenciarDados\GerenciarDados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Imagens\ControleFinanceiroAzulClaro.png" />
+    <Resource Include="Imagens\PastaTurquesa.png" />
+    <Resource Include="Imagens\Universo01.jpg" />
+    <Resource Include="Imagens\Voltar.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Telas\Ano_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Aposentadoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Categorias\CategoriaConsultarDespesa_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Categorias\Categoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Consultar\ConsultarDespesas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Consultar\ConsultarFinancas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Despesa_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Investimento_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Menus\CategoriasESubCategorias_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Menus\MenuIniciar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Menus\PaginaInicial_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Menus\RelatoriosEConsultas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Poupanca_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Receita_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeDespesas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeInvestimentos_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDePoupanca_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\Relatorios\RelatorioDeReceitas_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\SubCategorias\SubCategoriaConsultarDespesa_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Telas\SubCategorias\SubCategoria_UC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
