@@ -1,4 +1,4 @@
-﻿using AcessarBancoDados.ContextoDeDados;
+﻿using AcessarDadosDoBanco.ContextoDeDados;
 using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.Consultas

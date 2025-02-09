@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AcessarBancoDados\AcessarBancoDados.csproj" />
+    <ProjectReference Include="..\AcessarDadosDoBanco\AcessarDadosDoBanco.csproj" />
   </ItemGroup>
 
 </Project>

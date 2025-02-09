@@ -1,4 +1,4 @@
-﻿using AcessarBancoDados.Modelos;
+﻿using AcessarDadosDoBanco.Modelos;
 
 namespace GerenciarDados.AcessarDados
 {

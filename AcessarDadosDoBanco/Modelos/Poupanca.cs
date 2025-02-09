@@ -1,4 +1,4 @@
-﻿namespace AcessarBancoDados.Modelos
+﻿namespace AcessarDadosDoBanco.Modelos
 {
     public class Poupanca : ModeloBase
     {

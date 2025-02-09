@@ -1,8 +1,8 @@
-﻿using AcessarBancoDados.Modelos;
+﻿using AcessarDadosDoBanco.Modelos;
 using Microsoft.EntityFrameworkCore;
 using System.Windows;
 
-namespace AcessarBancoDados.ContextoDeDados
+namespace AcessarDadosDoBanco.ContextoDeDados
 {
     public class Contexto : DbContext
     {

@@ -35,8 +35,8 @@
     <Content Include="Imagens\Financeiro_2025.ico" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AcessarBancoDados\AcessarBancoDados.csproj" />    
+  <ItemGroup>    
+    <ProjectReference Include="..\AcessarDadosDoBanco\AcessarDadosDoBanco.csproj" />    
     <ProjectReference Include="..\GerenciarDados\GerenciarDados.csproj" />
   </ItemGroup>
 

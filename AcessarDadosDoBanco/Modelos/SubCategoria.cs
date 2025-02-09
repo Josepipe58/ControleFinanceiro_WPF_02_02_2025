@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AcessarBancoDados.Modelos
+namespace AcessarDadosDoBanco.Modelos
 {
-    public class SubCategoriaConsultarDespesa
+    public class SubCategoria
     {
         [Key]
         public int Id { get; set; }
@@ -11,12 +11,16 @@ namespace AcessarBancoDados.Modelos
         [Required, StringLength(100)]
         public string NomeDaSubCategoria { get; set; }
 
-        [ForeignKey(nameof(CategoriaConsultarDespesaId))]
-        public int CategoriaConsultarDespesaId { get; set; }
+        [ForeignKey(nameof(CategoriaId))]
+        public int CategoriaId { get; set; }
 
         [NotMapped]
         public string NomeDaCategoria { get; set; }
 
-        public virtual CategoriaConsultarDespesa CategoriaConsultarDespesa { get; set; }
+        [NotMapped]
+        public int FiltrarCategoriaId { get; set; }
+
+        [NotMapped]
+        public string NomeDoFiltro { get; set; }
     }
 }

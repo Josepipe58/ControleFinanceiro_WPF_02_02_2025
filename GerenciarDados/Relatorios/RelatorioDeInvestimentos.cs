@@ -1,4 +1,4 @@
-﻿using AcessarBancoDados.ContextoDeDados;
+﻿using AcessarDadosDoBanco.ContextoDeDados;
 using GerenciarDados.Listas;
 using GerenciarDados.Mensagens;
 

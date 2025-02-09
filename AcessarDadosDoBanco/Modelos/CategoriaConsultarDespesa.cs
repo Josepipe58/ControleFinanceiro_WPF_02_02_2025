@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AcessarBancoDados.Modelos
+namespace AcessarDadosDoBanco.Modelos
 {
     public class CategoriaConsultarDespesa
     {

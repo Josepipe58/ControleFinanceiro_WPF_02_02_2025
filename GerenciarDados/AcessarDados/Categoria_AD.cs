@@ -1,5 +1,5 @@
-﻿using AcessarBancoDados.ContextoDeDados;
-using AcessarBancoDados.Modelos;
+﻿using AcessarDadosDoBanco.ContextoDeDados;
+using AcessarDadosDoBanco.Modelos;
 using GerenciarDados.Mensagens;
 
 namespace GerenciarDados.AcessarDados
