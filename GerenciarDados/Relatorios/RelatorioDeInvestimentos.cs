@@ -8,7 +8,7 @@ namespace GerenciarDados.Relatorios
     {
         private static string _nomeDoMetodo = string.Empty;
         private static readonly string[] saldoDeInvestimento = ["Saldo Anterior", "Juros de Investimentos", "Depósito"];
-        private static readonly string[] jurosInvestimentoDeposito = ["Juros de Investimentos", "Depósito"];
+        private static readonly string[] jurosInvestimentoDeposito = ["Juros de Investimentos", "Depósito"];       
 
         public static ListaDeMeses RelatorioDoSaldoTotalDeInvestimentos(int ano)
         {

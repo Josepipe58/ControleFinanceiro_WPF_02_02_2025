@@ -9,6 +9,7 @@ namespace GerenciarDados.Consultas
         private static string _nomeDoMetodo = string.Empty;
         private static readonly string[] saldoJurosEDepositos = ["Saldo Anterior", "Juros de Investimentos", "Depósito"];
         private static readonly string[] despesaDebito = ["Despesa", "Débito"];
+        private static readonly string[] rendaCreditosPoupanca = ["Renda", "Créditos da Poupança"];
 
         public static double SaldoDaCarteira(int ano)
         {
@@ -20,10 +21,10 @@ namespace GerenciarDados.Consultas
                     contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum() +
                     contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Saque").Select(p => p.Valor).Sum() +
                     contexto.TInvestimento.Where(i => i.Ano == ano && i.NomeDaSubCategoria == "Saque").Select(i => i.Valor).Sum()) -
-                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(d => d.Valor).Sum() +
-                    contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa").Select(d => d.Valor).Sum() +
+
+                    (contexto.TDespesa.Where(d => d.Ano == ano && d.Tipo == "Despesa").Select(d => d.Valor).Sum() +
                     contexto.TInvestimento.Where(i => i.Ano == ano && i.NomeDaSubCategoria == "Depósito").Select(i => i.Valor).Sum() +                   
-                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum());
+                    contexto.TPoupanca.Where(p => p.Ano == ano && rendaCreditosPoupanca.Contains(p.NomeDaCategoria)).Select(p => p.Valor).Sum());
 
                 return Convert.ToDouble(saldoDaCarteira);
             }
@@ -40,9 +41,8 @@ namespace GerenciarDados.Consultas
             {
                 using var contexto = new Contexto();
                 var saldoDaPoupanca =
-                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Saldo Anterior").Select(p => p.Valor).Sum() +
-                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaCategoria == "Renda").Select(p => p.Valor).Sum() +
-                    contexto.TPoupanca.Where(p => p.Ano == ano && p.NomeDaSubCategoria == "Depósito").Select(p => p.Valor).Sum()) -
+                    (contexto.TPoupanca.Where(p => p.Ano == ano && p.Tipo == "Saldo Anterior").Select(p => p.Valor).Sum() +                    
+                    contexto.TPoupanca.Where(p => p.Ano == ano && rendaCreditosPoupanca.Contains(p.NomeDaCategoria)).Select(p => p.Valor).Sum()) -
                     contexto.TPoupanca.Where(p => p.Ano == ano && despesaDebito.Contains(p.Tipo)).Select(p => p.Valor).Sum();
 
                 return Convert.ToDouble(saldoDaPoupanca);

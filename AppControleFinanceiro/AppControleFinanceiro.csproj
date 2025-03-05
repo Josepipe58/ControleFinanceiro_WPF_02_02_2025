@@ -6,7 +6,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Imagens\$Cifrao.ico</ApplicationIcon>
+    <ApplicationIcon>Imagens\Cifrao.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Imagens\$Cifrao.ico" />
+    <Content Include="Imagens\Cifrao.ico" />
   </ItemGroup>
 
   <ItemGroup>

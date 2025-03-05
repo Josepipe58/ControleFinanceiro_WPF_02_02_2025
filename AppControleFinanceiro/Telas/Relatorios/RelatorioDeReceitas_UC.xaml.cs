@@ -48,7 +48,7 @@ namespace AppControleFinanceiro.Telas.Relatorios
 
                 //Benefícios do INSS, Juros da Poupança e Investimrntos.
                 DtgBeneficiosJurosEInvestimentos.ItemsSource = RelatorioDeReceitas
-                    .RelatorioDeBenefíciosDoINSSJurosDaPoupancaEBonus(Convert.ToInt32(CbxAno.Text));
+                    .RelatorioDeTodasAsReceitas(Convert.ToInt32(CbxAno.Text));
 
                 //Fluxo de Caixa - Receitas Menos Despesas.
                 DtgFluxoDeCaixa.ItemsSource = RelatorioDeReceitas

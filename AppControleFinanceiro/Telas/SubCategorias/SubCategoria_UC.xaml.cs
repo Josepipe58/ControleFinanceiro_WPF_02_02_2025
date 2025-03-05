@@ -40,7 +40,6 @@ namespace AppControleFinanceiro.Telas.SubCategprias
 
         private void CbxNomeDeFiltros_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Categoria_AD categoria_AD = new();
             CbxCategoria.ItemsSource = Categoria_AD.ObterCategoriasPorId(Convert.ToInt32(CbxNomeDeFiltros.SelectedValue));
             CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
             CbxCategoria.SelectedValuePath = "Id";

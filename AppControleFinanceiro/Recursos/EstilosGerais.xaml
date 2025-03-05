@@ -3,7 +3,7 @@
 
     <!--================================================| Diretório de Imagens |==============================================================-->
 
-    <ImageBrush x:Key="def_img" ImageSource="/Recursos/Voltar.png" Stretch="None"/>
+    <ImageBrush x:Key="def_img" ImageSource="/Imagens/Voltar.png" Stretch="None"/>
     <ImageBrush x:Key="controlefinanceiro_image" ImageSource="/Imagens/ControleFinanceiroAzulClaro.png" Stretch="Fill"/>
 
     <!--================================================| CalendarioDatePicker |==============================================================-->

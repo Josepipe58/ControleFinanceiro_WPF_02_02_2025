@@ -33,8 +33,7 @@ namespace AppControleFinanceiro.Telas
             }
             try
             {
-                //Combobox de Categorias
-                Categoria_AD categoria_AD = new();
+                //Combobox de Categorias                
                 CbxCategoria.ItemsSource = Categoria_AD.ObterCategoriasPorId(1);
                 CbxCategoria.DisplayMemberPath = "NomeDaCategoria";
                 CbxCategoria.SelectedValuePath = "Id";
